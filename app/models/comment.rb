@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
   end
 
   def apply_filter
-    self.body_html = Lesstile.format_as_xhtml(self.body, :code_formatter => Lesstile::CodeRayFormatter)
+    self.body_html = EnkiFormatter.format_as_xhtml(self.body)
   end
   
   def blank_openid_fields
