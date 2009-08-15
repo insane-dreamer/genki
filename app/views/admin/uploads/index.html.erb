@@ -1,0 +1,32 @@
+<h1>Your uploads</h1>
+
+<table cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>Created At</th>
+      <th>File</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Size</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+	
+  <tbody>
+    <% if @uploads.empty? -%>
+      <tr><td colspan="5">There are no uploads at this time.</td></tr>
+    <% else -%>
+      <%= render :partial => 'upload', :collection => @uploads %>
+    <% end -%>
+  </tbody>
+
+  <tfoot>
+    <% if @uploads.total_pages > 1 -%>
+      <tr class="pagination">
+        <td colspan='5'>
+          <%= will_paginate(@uploads, :previous_label => '« Newer', :next_label => 'Older »') %>
+        </td>  
+      </tr>  
+    <% end -%>  
+  </tfoot>
+</table>
