@@ -18,4 +18,8 @@ module ApplicationHelper
       'base'   => error.last
     }[error.first]
   end
+  
+  def host_url
+    request.protocol + request.host
+  end
 end

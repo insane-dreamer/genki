@@ -1,0 +1,27 @@
+xml.instruct! :xml, :version => "1.0"
+xml.urlset :xmlns => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
+  xml.url do
+    xml.loc "#{host_url}/"
+    xml.priority '1.0'
+  end
+  xml.url do
+    xml.loc "#{host_url}/archives/"
+    xml.priority '1.0'
+  end
+  
+  for post in @posts
+    xml.url do
+      xml.loc host_url + post_path(post) + '/'
+      xml.priority '0.8'
+      xml.lastmod post.published_at.strftime('%Y-%m-%d')
+    end
+  end
+  
+  for page in @pages
+    xml.url do
+      xml.loc host_url + page_path(page) + '/'
+      xml.priority '0.6'
+      xml.lastmod page.updated_at.strftime('%Y-%m-%d')
+    end
+  end
+end
