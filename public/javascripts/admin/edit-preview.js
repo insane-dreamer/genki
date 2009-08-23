@@ -23,6 +23,9 @@ $(document).ready(function() {
           },
           success: function(r) { 
             $('#preview .content').html(r);
+            if (window.prettyPrint) {
+              prettyPrint();
+            }
           }
         });
       }
