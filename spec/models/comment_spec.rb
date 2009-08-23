@@ -63,7 +63,7 @@ describe Comment do
     @comment.denormalize
   end
 
-  it "applies a Lesstile filter to body and store it in body_html before save" do
+  it "applies a Markdown filter to body and store it in body_html before save" do
     @comment.class.before_save.include?(:apply_filter).should == true
     Lesstile.should_receive(:format_as_xhtml).and_return("formatted")
     @comment.apply_filter
@@ -77,7 +77,7 @@ describe Comment do
     @comment.respond_to?(:user_logged_in?).should == true
   end
 
-  it "delegates post_tile to post" do
+  it "delegates post_title to post" do
     @comment.post = mock_model(Post)
     @comment.post.should_receive(:title).and_return("hello")
     @comment.post_title.should == "hello"
@@ -128,7 +128,7 @@ describe Comment, '.build_for_preview' do
   end
 
   it 'applies filter to body' do
-    @comment.body_html.should == 'A Comment'
+    @comment.body_html.should == "<p>A Comment</p>\n"
   end
 end
 
@@ -146,7 +146,7 @@ describe Comment, '.build_for_preview with OpenID author' do
   end
 
   it 'applies filter to body' do
-    @comment.body_html.should == 'A Comment'
+    @comment.body_html.should == "<p>A Comment</p>\n"
   end
 
   it 'sets author_url to OpenID identity' do
