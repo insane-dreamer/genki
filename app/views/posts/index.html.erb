@@ -1,15 +1,27 @@
 <% content_for(:page_title) do %><%=h posts_title(@tag) %><% end -%>
 <% content_for(:head)       do %><%= auto_discovery_link_tag(:atom, formatted_posts_path(:tag => @tag, :format => 'atom')) %><% end -%>
 
-<% if @posts.empty? -%>
-	<p>There are no posts yet.</p>
-<% else -%>
-	<% @posts.each do |post| -%>
-	<div class="post post-<%= post.id %>">
-	  <%= render :partial => 'post', :locals => {:post => post} %>
-	</div>
-	<% end -%>
-  <% if more_content? -%>
-    <div class="related">Looking for more? Head on over to the <%= link_to("archives", archives_path) %>.</div>
-  <% end -%>
-<% end -%>
+<div id="feature">
+
+<div id="featureLeft">
+  <a href="javascript:" rel="slide-1" class="carousel-jumper carousel-selected">WIN</a>
+  <a href="javascript:" rel="slide-2" class="carousel-jumper">THINK</a>
+  <a href="javascript:" rel="slide-3" class="carousel-jumper">LEAP</a>
+  <a href="javascript:" rel="slide-4" class="carousel-jumper">TWEET</a>
+</div>
+
+<div id="featureRight">
+  <div id="carousel-wrapper">
+    <div id="carousel-content">
+    	<% @posts.each do |post| -%>
+      	<div class="post post-<%= post.id %>">
+      	  <%= render :partial => 'summary', :locals => {:post => post} %>
+      	</div>
+    	<% end -%>  
+    </div>
+  </div> 
+</div>
+
+</div><!-- end #feature -->
+
+<%= render :partial => "navigation" %>
