@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :comments, :member => {:mark_as_spam => :put, :mark_as_ham => :put}
     admin.resources :tags
     admin.resources :undo_items, :member => {:undo => :post}
+    admin.resources :sections
   end
 
   map.admin_health '/admin/health/:action', :controller => 'admin/health', :action => 'index'
@@ -20,6 +21,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'posts', :action => 'index'
   map.resources :posts
+  map.previous_post '/post/:id/previous', :controller => 'posts', :action => 'show_previous'
+  map.next_post '/post/:id/next', :controller => 'posts', :action => 'show_next'
+  
   map.resources :sitemap
 
   map.resources :pages

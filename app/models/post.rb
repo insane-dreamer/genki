@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
 
   has_many                :comments, :dependent => :destroy
   has_many                :approved_comments, :class_name => 'Comment'
+  belongs_to              :section
 
   before_validation       :generate_slug
   before_validation       :set_dates
@@ -13,6 +14,7 @@ class Post < ActiveRecord::Base
   validates_presence_of   :title, :slug, :body
 
   validate                :validate_published_at_natural
+
 
   def validate_published_at_natural
     errors.add("published_at_natural", "Unable to parse time") unless published?
@@ -114,6 +116,14 @@ class Post < ActiveRecord::Base
   def generate_slug
     self.slug = self.title.dup if self.slug.blank?
     self.slug.slugorize!
+  end
+
+  def next
+    Post.find(:first, :conditions => ["id > ? and section_id = ?", self.id, self.section_id], :limit => 1, :order => "id")
+  end
+  
+  def previous
+    Post.find(:first, :conditions => ["id < ? and section_id = ?", self.id, self.section_id], :limit => 1, :order => "id DESC")
   end
 
   # TODO: Contribute this back to acts_as_taggable_on_steroids plugin
