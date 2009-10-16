@@ -5,9 +5,16 @@
 <% content_for(:page_title) do -%>
 <%=h post_title(@post) -%>
 <% end -%>
-<%= render :partial => 'post', :locals => {:post => @post} %>
+
+<div id="fullPost">
+  <%= render :partial => 'post', :locals => {:post => @post} %>
+</div>
+
+<div id="arrows">
+  <%= single_post_navigation %>
+</div>
+
 <!--
 <%= render :partial => "comments" %>
 -->
 
-<%= render :partial => "navigation" %>
