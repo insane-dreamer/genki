@@ -9,11 +9,14 @@ class FrontpageController < ApplicationController
     end
     @section = params[:section] ? Section.find(params[:section].to_i) : Section.first
     @page, @posts = get_page_and_posts(@section,page)  
+    @rssposts = Post.find_recent(:tag => @tag, :include => :tags)
+    
     raise(ActiveRecord::RecordNotFound) if @tag && @posts.empty?
+    
     respond_to do |format|
       format.html
       format.js
-      format.atom { render :layout => false }
+      format.atom 
     end
   end
   
