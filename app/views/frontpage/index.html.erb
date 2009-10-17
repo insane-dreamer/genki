@@ -4,14 +4,11 @@
 <div id="feature">
 
 <div id="featureLeft">
-  <a href="javascript:" rel="slide-1" class="carousel-jumper carousel-selected">WIN</a>
-  <a href="javascript:" rel="slide-2" class="carousel-jumper">THINK</a>
-  <a href="javascript:" rel="slide-3" class="carousel-jumper">LEAP</a>
-  <a href="javascript:" rel="slide-4" class="carousel-jumper">TWEET</a>
+  <%= frontpage_tabs(@section) %>
 </div>
 
 <div id="featureRight">
-  <div id="carousel-wrapper">
+  <div id="frontpage-posts-wrapper">
     <div id="frontpage-posts">
       <%= render :partial => "posts", :locals => {:posts => @posts} %>
     </div>
@@ -21,5 +18,5 @@
 </div><!-- end #feature -->
 
 <div id="arrows">
-  <%= front_page_navigation(@page,@page.posts.first) %>
+  <%= front_page_navigation(@page,@section) %>
 </div>

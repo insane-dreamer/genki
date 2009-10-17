@@ -1,9 +1,12 @@
+<!--
 <% content_for(:head) do -%>
   <%= javascript_include_tag 'common' %>
   <%= javascript_include_tag 'live-comment-preview' %>
 <% end -%>
+-->
+
 <% content_for(:page_title) do -%>
-<%=h post_title(@post) -%>
+  <%=h post_title(@post) -%>
 <% end -%>
 
 <div id="fullPost">
@@ -17,4 +20,3 @@
 <!--
 <%= render :partial => "comments" %>
 -->
-

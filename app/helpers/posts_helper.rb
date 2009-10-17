@@ -7,7 +7,7 @@ module PostsHelper
 
   def single_post_navigation(post)
     nav = previous_post_button(post)
-    nav << middle_nav_button(post)
+    nav << middle_nav_button(post.section)
     nav << next_post_button(post)
   end
 

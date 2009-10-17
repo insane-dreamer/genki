@@ -23,12 +23,12 @@ module ApplicationHelper
     request.protocol + request.host
   end
 
-  def middle_nav_button(post)
+  def middle_nav_button(section)
     if params[:action] == "index" 
       image = 'archives.gif'
       path = archives_path
     else
-      image = post.section.name + '.gif'
+      image = section.name + '.gif'
       path = root_path
     end
     content_tag(:div, link_to(image_tag(image), path), :id => 'middleNavButton')

@@ -24,8 +24,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.previous_post '/post/:id/previous', :controller => 'posts', :action => 'show_previous'
   map.next_post '/post/:id/next', :controller => 'posts', :action => 'show_next'
-  map.previous_page '/page/:page/previous/:post', :controller => 'frontpage', :action => 'show_previous_page'
-  map.next_page '/page/:page/next/:post', :controller => 'frontpage', :action => 'show_next_page'
+  map.previous_page '/section/:section/page/:page/previous', :controller => 'frontpage', :action => 'show_previous_page'
+  map.next_page '/section/:section/page/:page/next', :controller => 'frontpage', :action => 'show_next_page'
   
   map.resources :sitemap
 
