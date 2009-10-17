@@ -2,8 +2,13 @@ class FrontpageController < ApplicationController
 
   def index
     @tag = params[:tag]
+    if params[:direction]
+      page = params[:direction] == "previous" ? params[:page].to_i - 1 : params[:page].to_i + 1
+    else
+      page = "last"
+    end
     @section = params[:section] ? Section.find(params[:section].to_i) : Section.first
-    @page, @posts = get_page_and_posts(@section)  
+    @page, @posts = get_page_and_posts(@section,page)  
     raise(ActiveRecord::RecordNotFound) if @tag && @posts.empty?
     respond_to do |format|
       format.html
@@ -11,17 +16,10 @@ class FrontpageController < ApplicationController
       format.atom { render :layout => false }
     end
   end
-
-  def change_page
-    page = params[:direction] == "previous" ? params[:page].to_i - 1 : params[:page].to_i + 1
-    @section = Section.find(params[:section])
-    @page, @posts = get_page_and_posts(@section, page)
-    render :template => 'frontpage/index.js.rjs'
-  end
   
   private
 
-  def get_page_and_posts(section, pg = "last")
+  def get_page_and_posts(section, pg)
     allposts = section.posts.scoped(:order => 'created_at ASC')
     allposts.per_page = section.per_page
     if pg == "last" or pg > allposts.pages.count

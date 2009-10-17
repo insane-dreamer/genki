@@ -20,14 +20,14 @@ ActionController::Routing::Routes.draw do |map|
   map.archives '/archives', :controller => 'archives', :action => 'index'
 
   map.connect 'post/:id/:direction', :controller => 'posts', :action => 'show'
+
   map.resources :posts
   map.resources :sections
 
   map.root :controller => 'frontpage', :action => 'index'
   map.frontpage '/home/section/:section', :controller => 'frontpage', :action => 'index'
   
-  map.change_post '/post/:id/:direction', :controller => 'posts', :action => 'change_post'
-  map.change_page '/home/section/:section/page/:page/:direction', :controller => 'frontpage', :action => 'change_page'
+  map.change_page '/home/section/:section/page/:page/:direction', :controller => 'frontpage', :action => 'index'
   map.switch_tab '/home/tab/:section', :controller => 'frontpage', :action => 'switch_tab'
   
   map.resources :sitemap

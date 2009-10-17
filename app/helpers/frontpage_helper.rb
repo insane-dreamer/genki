@@ -14,7 +14,7 @@ module FrontpageHelper
   end
 
   def previous_page_button(page,section)
-    arrow = page.previous ? link_to_remote(image_tag('arrow_left.jpg', :class => 'arrow'), :url => change_page_path(:page => page, :section => section, :direction => 'previous'), :html => {:class => 'ico-prev'}) : "&nbsp;"
+    arrow = page.previous ? link_to_remote(image_tag('arrow_left.jpg', :class => 'arrow'), :url => frontpage_path(:page => page, :section => section, :direction => 'previous'), :html => {:class => 'ico-prev'}) : "&nbsp;"
     content_tag :div, arrow, :id => 'leftArrow'
   end
 
