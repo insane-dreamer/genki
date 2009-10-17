@@ -223,9 +223,7 @@ height: 300px;
 overflow: hidden;
 }
 
-  
-
-#carousel-content .slide {
+#frontpage-posts .slide {
 float: left;
 width: 608px;
 height: 300px;
@@ -305,10 +303,10 @@ width: 40px;
 float: left;
 }
 
-/* ------- Entries ---------- */
+/* ------- Posts ---------- */
 .summary {
 	padding-bottom: 15px;
 }
-.entrybody img {
+.postbody img {
 	height: 150px;
 }

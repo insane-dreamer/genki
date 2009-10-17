@@ -12,16 +12,14 @@
 
 <div id="featureRight">
   <div id="carousel-wrapper">
-    <div id="carousel-content">
-    	<% @posts.each do |post| -%>
-      	<div class="post post-<%= post.id %>">
-      	  <%= render :partial => 'summary', :locals => {:post => post} %>
-      	</div>
-    	<% end -%>  
+    <div id="frontpage-posts">
+      <%= render :partial => "posts", :locals => {:posts => @posts} %>
     </div>
   </div> 
 </div>
 
 </div><!-- end #feature -->
 
-<%= render :partial => "navigation" %>
+<div id="arrows">
+  <%= front_page_navigation(@page,@page.posts.first) %>
+</div>

@@ -4,7 +4,7 @@
     (<%= link_to(pluralize(post.approved_comments.size, "comment"), post_path(post, :anchor => 'comments')) %>)
   <% end -%>
   </div>
-  <div class="entrybody">
+  <div class="postbody">
     <%= post.body_html.untaint %>
   </div>
   <div class="meta">

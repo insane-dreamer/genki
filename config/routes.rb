@@ -19,10 +19,13 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/admin/api', :controller => 'admin/api', :action => 'index'
   map.archives '/archives', :controller => 'archives', :action => 'index'
 
-  map.root :controller => 'posts', :action => 'index'
+  map.root :controller => 'frontpage', :action => 'index'
   map.resources :posts
+  
   map.previous_post '/post/:id/previous', :controller => 'posts', :action => 'show_previous'
   map.next_post '/post/:id/next', :controller => 'posts', :action => 'show_next'
+  map.previous_page '/page/:page/previous/:post', :controller => 'frontpage', :action => 'show_previous_page'
+  map.next_page '/page/:page/next/:post', :controller => 'frontpage', :action => 'show_next_page'
   
   map.resources :sitemap
 
