@@ -25,13 +25,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sections
 
   map.root :controller => 'frontpage', :action => 'index'
-  map.frontpage '/home/section/:section', :controller => 'frontpage', :action => 'index'
   
+  map.frontpage '/home/section/:section', :controller => 'frontpage', :action => 'index'
   map.change_page '/home/section/:section/page/:page/:direction', :controller => 'frontpage', :action => 'index'
   map.switch_tab '/home/tab/:section', :controller => 'frontpage', :action => 'switch_tab'
   
   map.resources :sitemap
-
+  map.resources :frontpage
   map.resources :pages
 
   map.connect ':year/:month/:day/:slug/comments', :controller => 'comments', :action => 'index'
