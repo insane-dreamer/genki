@@ -3,20 +3,20 @@
 
 <div id="feature">
 
-<div id="featureLeft">
-  <%= frontpage_tabs(@section) %>
-</div>
+  <div id="featureLeft">
+    <%= frontpage_tabs(@section) %>
+  </div>
+  
+  <div id="featureRight">
+    <div id="frontpage-posts-wrapper">
+      <div id="frontpage-posts">
+        <%= render :partial => "posts", :locals => {:posts => @posts} %>
+      </div>
+    </div> 
+  </div>
 
-<div id="featureRight">
-  <div id="frontpage-posts-wrapper">
-    <div id="frontpage-posts">
-      <%= render :partial => "posts", :locals => {:posts => @posts} %>
-    </div>
-  </div> 
 </div>
-
-</div><!-- end #feature -->
 
 <div id="arrows">
-  <%= front_page_navigation(@page,@section) %>
+  <%= frontpage_navigation(@page,@section) %>
 </div>

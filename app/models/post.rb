@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
   validates_presence_of   :title, :slug, :body
 
   validate                :validate_published_at_natural
+  attr_accessor           :direction
 
   def validate_published_at_natural
     errors.add("published_at_natural", "Unable to parse time") unless published?

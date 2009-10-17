@@ -1,2 +1,17 @@
-<h1>Sections#index</h1>
-<p>Find me in app/views/sections/index.html.erb</p>
+<% content_for(:page_title) do %><%=h archives_title %><% end -%>
+<h2>Archives</h2>
+
+<% if @months.empty? -%>
+	<p>Once posts are added they will start to appear in this archive.</p>
+<% else -%>
+
+	<% @months.each do |month| -%>
+	<h3><%= format_month(month.date) %></h3>
+	<ul class='archive-month'>
+	  <% month.posts.each do |post| -%>
+	    <li><%= link_to(post.title, post_path(post)) %><% unless post.tags.empty? %> <span class='tags'>(<%= linked_tag_list(post.tags) %>)</span><% end -%></li>
+	  <% end -%>
+	</ul>  
+	<% end -%>
+
+<% end -%>

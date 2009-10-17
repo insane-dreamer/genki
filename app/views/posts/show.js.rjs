@@ -1,0 +1,2 @@
+page.replace_html 'fullPost', :partial => 'post', :object => @post
+page.replace_html 'arrows', single_post_navigation(@post)

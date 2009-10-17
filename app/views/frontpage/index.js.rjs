@@ -1,0 +1,3 @@
+page.replace_html 'frontpage-posts', :partial => 'posts', :object => @posts
+page.replace_html 'arrows', frontpage_navigation(@page,@section)
+page.replace_html 'featureLeft', frontpage_tabs(@section)

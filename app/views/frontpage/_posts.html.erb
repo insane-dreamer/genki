@@ -1,6 +1,6 @@
 <% posts.each do |post| -%>
   <div class="post post-<%= post.id %>">
-    <div id="singlePostSummary">
+    <div id=<%= section_div_id %>>
       <h2><%= h(post.title) %></h2> 
       <div class="author"><%= h(post.author) %>, <%= format_post_date(post.published_at) %>
       <% if post.approved_comments.size > 0 %>

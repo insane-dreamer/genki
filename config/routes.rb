@@ -19,13 +19,16 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/admin/api', :controller => 'admin/api', :action => 'index'
   map.archives '/archives', :controller => 'archives', :action => 'index'
 
-  map.root :controller => 'frontpage', :action => 'index'
+  map.connect 'post/:id/:direction', :controller => 'posts', :action => 'show'
   map.resources :posts
+  map.resources :sections
+
+  map.root :controller => 'frontpage', :action => 'index'
+  map.frontpage '/home/section/:section', :controller => 'frontpage', :action => 'index'
   
-  map.previous_post '/post/:id/previous', :controller => 'posts', :action => 'show_previous'
-  map.next_post '/post/:id/next', :controller => 'posts', :action => 'show_next'
-  map.previous_page '/section/:section/page/:page/previous', :controller => 'frontpage', :action => 'show_previous_page'
-  map.next_page '/section/:section/page/:page/next', :controller => 'frontpage', :action => 'show_next_page'
+  map.change_post '/post/:id/:direction', :controller => 'posts', :action => 'change_post'
+  map.change_page '/home/section/:section/page/:page/:direction', :controller => 'frontpage', :action => 'change_page'
+  map.switch_tab '/home/tab/:section', :controller => 'frontpage', :action => 'switch_tab'
   
   map.resources :sitemap
 
