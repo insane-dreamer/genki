@@ -1,5 +1,6 @@
 <tr class="<%= cycle('', 'alt') %>">
   <td><%= upload.created_at.strftime('%d %b, %Y') %></td>
+  <td><%= upload_thumbnail(upload) %>
   <td><%= link_to(h(upload.file.original_filename), upload.file.url) %></td>
   <td><%= link_to(h(upload.description), admin_upload_path(upload)) %></td>
   <td><%=h upload.file.content_type %></td>

@@ -172,6 +172,9 @@ body {
 a {
   color: #222222;
 }
+.upload_thumbnail {
+	height: 50px;
+}
 
 /* -------- FORMS */
 form input,
