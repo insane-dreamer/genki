@@ -2,7 +2,7 @@ module FrontpageHelper
 
   def frontpage_navigation(page,section)
     nav = previous_page_button(page,section)
-    nav << content_tag(:div, link_to(image_tag('archives.gif'), :url => section_path(section)), :id => 'middleNavButton')
+    nav << content_tag(:div, link_to(image_tag('archives.gif'), section_path(section)), :id => 'middleNavButton')
     nav << next_page_button(page,section)
   end
 
