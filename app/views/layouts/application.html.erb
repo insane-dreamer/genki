@@ -9,8 +9,6 @@
   <title><%= yield(:page_title) || h(config[:title]) %></title>
   <%= stylesheet_link_tag 'wtw' %>
   <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'carousel' %>
-  <%= javascript_include_tag 'motionpack' %>
   <%= open_id_delegation_link_tags(h(config[:open_id_delegation, :server]), h(config[:open_id_delegation, :delegate])) if config[:open_id_delegation] %>
   <%= yield(:head) %>
 </head>
@@ -19,9 +17,9 @@
   <%= render :partial => "layouts/search" %>
   <%= render :partial => "layouts/submit" %>
   <div id="headerTop">
-    <a href="#" onclick="Effect.toggle('submit','appear', {duration: 0}); return false;" style="padding: 8px 0 0 0; background: none;">SUBMIT</a>
-    <a href="#" onclick="Effect.toggle('search','appear', {duration: 0}); return false;">SEARCH</a>
-    <a href="#">ABOUT</a>
+    <a href="#" onclick="Effect.toggle('submit','blind', {duration: 0.5}); return false;" id="submit_button">SUBMIT</a>
+    <a href="#" onclick="Effect.toggle('search','blind', {duration: 0.5}); return false;">SEARCH</a>
+    <%= link_to "ABOUT", page_path(Page.find_by_slug('about')) %>
   </div>
 </div>
 
