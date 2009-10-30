@@ -29,7 +29,7 @@ class Admin::UploadsController < Admin::BaseController
     respond_to do |format|
       if @upload.save
         flash[:notice] = 'Upload was successfully created.'
-        format.html { redirect_to(:action => 'show', :id => @upload) }
+        format.html { redirect_to(:action => 'index') }
         format.xml  { render :xml => @upload, :status => :created, :location => @upload }
       else
         format.html { render :action => "new" }

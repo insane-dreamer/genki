@@ -23,5 +23,12 @@ module ApplicationHelper
     request.protocol + request.host
   end
 
+  def upload_thumbnail(upload)
+    if upload.is_image?
+      image_tag(upload.file.url, :class => 'upload_thumbnail')
+    else
+      content_tag(:div, "&nbsp;", {:class => 'upload_thumbnail'})
+    end
+  end
 
 end

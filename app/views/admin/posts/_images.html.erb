@@ -1,0 +1,13 @@
+<div id="image_thumbs">
+
+<h2>Available images <small>(latest first)</small></h2>
+<p>Drag and drop into the post to get the URL.</p>
+<p><em>Use the following syntax to show thumbnail and link to a fullsize copy: [![](URL)](URL)</em></p>
+
+    <% Upload.images.each do |img| -%>
+
+    <%=  image_tag(img.file.url, :class => 'image_thumb') %>
+
+    <% end -%>
+    
+</div>
