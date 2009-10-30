@@ -131,6 +131,11 @@ position: relative;
 margin: 0px auto;
 }
 
+#submit_button {
+	padding: 8px 0 0 0;
+	background: none;
+}
+
 #search {
 width: 849px;
 position: relative;
@@ -156,7 +161,7 @@ padding: 84px 0 0 0;
 }
 
 #content {
-width: 809px;
+width: 808px;
 background: #fff;
 padding: 0 20px 0 20px;
 }
