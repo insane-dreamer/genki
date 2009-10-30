@@ -4,7 +4,7 @@
 
 <% form.input_field_set do -%>
   <%= form.input :title -%>
-  <li><label>Section*</label> <%= form.collection_select(:section_id, Section.all, :id, :name, { :prompt => "Please choose a section" } ) %></li>
+  <%= form.input :section_id %>
   <%= form.input :author -%>
   <%= form.input :summary, :required => false, :hint => "(If Summary is left empty, Body will be displayed on front page.)" -%>
   <%= form.input :body, :hint => "<a href='http://daringfireball.net/projects/markdown/syntax'>Markdown enabled</a>. Use Ctrl+E to switch between preview and edit mode." -%>

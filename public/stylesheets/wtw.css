@@ -310,10 +310,14 @@ float: left;
 
 /* ------- Posts ---------- */
 .summary {
-	padding-bottom: 15px;
 }
-.postbody img {
+
+.postbody img, .summary img {
+  float: left;
+  margin-right: 15px;
 	height: 150px;
+	border: 1px solid black;
+	padding: 1px;
 }
 
 /* ------- Archive page ---------- */
@@ -321,3 +325,4 @@ float: left;
 .archive-month li {
 	margin-bottom: 5px;
 }
+

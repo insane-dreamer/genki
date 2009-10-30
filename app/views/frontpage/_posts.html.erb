@@ -8,10 +8,10 @@
       <% end -%>
       </div>
       <% if !post.summary.empty? -%>
-        <div class="summary"><%= h(post.summary.untaint) %></div>
+        <div class="summary"><%= post.summary_html.untaint %></div>
         <%= link_to image_tag('more.gif', {:class => 'more'}), post_path(post) %>
       <% else -%>
-        <div class="summary"><%= h(post.body.untaint) %></div>
+        <div class="summary"><%= post.body_html.untaint %></div>
       <% end -%>    
 
     <!--
