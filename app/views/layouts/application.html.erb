@@ -13,21 +13,13 @@
   <%= yield(:head) %>
 </head>
 
-<div id="headerWrap">
-  <%= render :partial => "layouts/search" %>
-  <%= render :partial => "layouts/submit" %>
-  <div id="headerTop">
-    <a href="#" onclick="Effect.toggle('submit','blind', {duration: 0.5}); return false;" id="submit_button">SUBMIT</a>
-    <a href="#" onclick="Effect.toggle('search','blind', {duration: 0.5}); return false;">SEARCH</a>
-    <%= link_to "ABOUT", page_path(Page.find_by_slug('about')) %>
-  </div>
-</div>
+<%= render :partial => "layouts/header" %>
 
 <div id="bodyInner">
 
   <div id="wrapper">
   
-    <a href="/"><div id="header"></div></a>
+    <%= link_to content_tag(:div, nil, :id => "header"), root_path %>
     
     <div id="content">
     
@@ -42,6 +34,5 @@
 </div>
 
 </body>
-
 
 </html>

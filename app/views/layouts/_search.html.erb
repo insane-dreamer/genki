@@ -1,15 +1,11 @@
 <div id="search" style="display:none; overflow:hidden; height: 133px;">
+
 <h3>Search</h3>
 
 <% form_tag '/search' do -%>
 
-<table><tr>
-<td width="270">
-<br /><br />
-<%= text_field_tag 'query' %>
-</td><td>
-<%= image_submit_tag 'go.gif', :style => 'width: 75px; height: 27px; margin: 32px 0 0 0; border: 0; padding: 0; background: none;' %>
-</td></tr></table>
+  <%= text_field_tag 'query', nil, :id => 'search_box' %>
+  <%= image_submit_tag 'go.gif', :id => 'search_submit_button' %>
 
 <% end -%>
 

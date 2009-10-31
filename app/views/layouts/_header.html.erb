@@ -1,0 +1,10 @@
+<div id="headerWrap">
+  <%= render :partial => "layouts/search" %>
+  <%= render :partial => "layouts/submit" %>
+  <div id="headerTop">
+    <%= show_flash() if ( flash[:notice] || flash[:error] ) %>
+    <%= link_to_function 'SUBMIT', "Effect.toggle('submit','blind', {duration: 0.5})" %>
+    <%= link_to_function 'SEARCH', "Effect.toggle('search','blind', {duration: 0.5})" %>
+    <%= link_to "ABOUT", page_path(Page.find_by_slug('about')) %>
+  </div>
+</div>
