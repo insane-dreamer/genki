@@ -15,6 +15,11 @@ module CoreExtensions::String
   def slugorize!
     self.replace(self.slugorize)
   end
+  
+  def strip_html_tags
+    self.gsub(/<\/?[^>]*>/, "")
+  end
+  
 end
 
 String.send(:include, CoreExtensions::String)

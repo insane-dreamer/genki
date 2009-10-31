@@ -16,6 +16,12 @@ class Post < ActiveRecord::Base
   validate                :validate_published_at_natural
   attr_accessor           :direction
 
+  define_index do
+    indexes body, :as => :post, :sortable => true
+    indexes author, :sortable => true
+    has created_at, updated_at
+  end 
+
   def validate_published_at_natural
     errors.add("published_at_natural", "Unable to parse time") unless published?
   end

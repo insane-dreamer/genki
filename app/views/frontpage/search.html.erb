@@ -1,0 +1,23 @@
+<% content_for(:page_title) do -%>
+WTW :: Search Results: <%= h @query -%>
+<% end -%>
+
+<div id="fullPost"
+
+<p><%= @results.total_entries %> result(s) when searching for "<%= h(@query) %>":</p>
+
+<ul>
+<% for result in @results %>
+
+  <li class="result">
+    <%= link_to result.title, post_path(result) %> <small>(<%= result.author %>, <%= format_post_date(result.published_at) %>)</small><br/>
+    <!-- strip_html_tags is a custom extension to String. See /lib/core_extensions. -->
+    <small><%= result.body_html.strip_html_tags.slice(0..250) %>...</small>
+  </li>
+  
+<% end -%>
+</ul>
+
+<%= will_paginate @results %>
+
+</div>

@@ -142,6 +142,27 @@ position: relative;
 margin: 0px auto;
 }
 
+#search_submit_button {
+	width: 75px;
+	height: 27px;
+	margin: 32px 0 0 0;
+	border: 0;
+	padding: 0;
+	background: none;
+}
+
+.result {
+  padding-bottom: 10px;
+  color: lightgrey;
+}  
+.result a {
+  text-decoration: none;
+  color: black;
+}
+.result a:hover {
+	color: white;
+}
+
 #bodyInner {
 background: url(/images/bg.jpg) top center repeat-x;
 width: 100%;

@@ -1,13 +1,16 @@
 <div id="search" style="display:none; overflow:hidden; height: 133px;">
 <h3>Search</h3>
 
-<form action='#' method='post'>
+<% form_tag '/search' do -%>
+
 <table><tr>
 <td width="270">
 <br /><br />
-<input type="text" name="search" />
+<%= text_field_tag 'query' %>
 </td><td>
-<input type="image" name="submit" src="/images/go.gif" style="width: 75px; height: 27px; margin: 32px 0 0 0; border: 0; padding: 0; background: none;">
+<%= image_submit_tag 'go.gif', :style => 'width: 75px; height: 27px; margin: 32px 0 0 0; border: 0; padding: 0; background: none;' %>
 </td></tr></table>
-</form>
+
+<% end -%>
+
 </div>

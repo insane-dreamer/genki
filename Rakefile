@@ -8,5 +8,6 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+require 'thinking_sphinx/tasks'
 
 task :default => [:spec, :features]

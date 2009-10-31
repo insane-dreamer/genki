@@ -20,6 +20,11 @@ class FrontpageController < ApplicationController
     end
   end
   
+  def search
+    @query = params[:query]
+    @results = Post.search @query, :page => params[:page], :per_page => 15
+  end
+  
   private
 
   def get_page_and_posts(section, pg)
