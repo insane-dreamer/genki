@@ -315,8 +315,8 @@ float: left;
 .postbody img, .summary img {
   float: left;
   margin-right: 15px;
-	height: 150px;
-	border: 1px solid black;
+  margin-bottom: 5px;
+	border: 1px solid black !important;
 	padding: 1px;
 }
 

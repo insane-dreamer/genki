@@ -1,5 +1,5 @@
 class Upload < ActiveRecord::Base
-  has_attached_file :file
+  has_attached_file :file, :styles => { :original => "1024>", :thumb => "100>" }
 
   named_scope :images, :conditions => [ 'file_content_type LIKE ?', '%image%' ], :order => 'created_at DESC'
 
