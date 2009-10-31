@@ -1,0 +1,14 @@
+log/**/*
+log
+tmp/**/*
+tmp
+config/database.yml
+db/schema.rb
+*.kpf
+public/system
+config/enki.yml
+db/*.sqlite3
+.DS_Store
+*.esproj
+config/*.sphinx.conf
+db/sphinx
