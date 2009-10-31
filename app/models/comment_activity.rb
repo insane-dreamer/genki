@@ -16,7 +16,7 @@ class CommentActivity
   class << self
     def find_recent
       Post.find(:all,
-        :select => 'distinct posts.*',
+        :select => 'posts.*',
         :joins  => 'INNER JOIN comments ON comments.post_id = posts.id',
         :order  => 'comments.created_at DESC',
         :limit  => 5
