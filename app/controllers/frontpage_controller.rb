@@ -18,12 +18,20 @@ class FrontpageController < ApplicationController
       format.js
       format.atom 
     end
+
   end
   
   def search
     @query = params[:query]
     @results = Post.search @query, :page => params[:page], :per_page => 15
   end
+  
+	def submit
+    Notifier.deliver_user_submission(params)
+    flash[:notice] = "Thank you for your submission!" 
+    redirect_to root_path
+  end
+				
   
   private
 

@@ -30,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   map.change_page '/home/section/:section/page/:page/:direction', :controller => 'frontpage', :action => 'index'
   map.switch_tab '/home/tab/:section', :controller => 'frontpage', :action => 'switch_tab'
   map.search '/search', :controller => 'frontpage', :action => 'search' 
+  map.submit '/submit', :controller => 'frontpage', :action => 'submit'
   
   map.resources :sitemap
   map.resources :frontpage
