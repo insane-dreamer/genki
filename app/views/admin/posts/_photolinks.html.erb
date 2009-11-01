@@ -2,13 +2,13 @@
 
 <p>To display the thumbnail only:</p>
 
-<b><%= "![](#{@photo.file.url(:thumb)})" %></b>
+<%= "![](#{@photo.file.url(:thumb)})" %>
 
 <br/>
 
 <p>To display the thumbnail and link to the full photo:</p>
 
-<b><%= "[![](#{@photo.file.url(:thumb)})](#{@photo.file.url})" %></b>
+&lt;a href=&quot;<%= @photo.file.url %>&quot; rel=&quot;lightbox&quot;&gt;&lt;img src=&quot;<%= @photo.file.url(:thumb) %>&quot; />&lt;/a&gt;
 
 <br/><br/>
 
