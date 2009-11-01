@@ -39,8 +39,6 @@ class Admin::UploadsController < Admin::BaseController
   end
 
   def update
-    @upload = Upload.find(params[:id])
-
     respond_to do |format|
       if @upload.update_attributes(params[:upload])
         flash[:notice] = 'Upload was successfully updated.'
@@ -54,7 +52,6 @@ class Admin::UploadsController < Admin::BaseController
   end
 
   def destroy
-    @upload = Upload.find(params[:id])
     @upload.destroy
 
     respond_to do |format|
@@ -62,6 +59,8 @@ class Admin::UploadsController < Admin::BaseController
       format.xml  { head :ok }
     end
   end
+
+
   
   protected
   
