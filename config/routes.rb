@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.admin_health '/admin/health/:action', :controller => 'admin/health', :action => 'index'
+  map.photolink '/upload/:id/link', :controller => 'admin/posts', :action => 'show_photo_link'
 
   map.connect '/admin', :controller => 'admin/dashboard', :action => 'show'
   map.connect '/admin/api', :controller => 'admin/api', :action => 'index'

@@ -1,0 +1,15 @@
+<p><b>Cut and paste the following code and add to the post:</b></p>
+
+<p>To display the thumbnail only:</p>
+
+<b><%= "![](#{@photo.file.url(:thumb)})" %></b>
+
+<br/>
+
+<p>To display the thumbnail and link to the full photo:</p>
+
+<b><%= "[![](#{@photo.file.url(:thumb)})](#{@photo.file.url})" %></b>
+
+<br/><br/>
+
+<%= link_to_function content_tag(:small, "[ CLOSE ]", :style => "float:right;"), "Effect.Fade('photolinks', { duration: 0 } )" %> 

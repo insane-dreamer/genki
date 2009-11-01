@@ -83,6 +83,14 @@ class Admin::PostsController < Admin::BaseController
     end
   end
 
+  def show_photo_link
+    @photo = Upload.find(params[:id])
+    render :update do |page|
+      page.show 'photolinks'
+    	page.replace_html 'photolinks', :partial => 'photolinks', :object => @photo
+    end
+  end
+
   protected
 
   def find_post

@@ -186,6 +186,19 @@ a {
 	border: solid 1px black;
 	margin: 2px 2px 10px 2px;
 }
+
+#photolinks {
+  position: absolute;
+  background: white;
+  top: 200px;
+  left: 200px;
+  border: 1px solid black;
+  z-index: 1;
+  padding: 20px;
+	font: sans-serif 0.8em;
+}
+
+
 /* -------- FORMS */
 form input,
 form select,

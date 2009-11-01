@@ -9,6 +9,8 @@
   
   <title><%=h config[:title] %> - Admin</title>
 
+  <%= javascript_include_tag :defaults %>
+
   <%= javascript_include_tag 'jquery.js' %>
   <%= javascript_include_tag 'jquery.livequery.js' %>
   <%= javascript_include_tag 'jquery.form.js' %>
@@ -17,6 +19,10 @@
   <%= javascript_include_tag 'prettify' %>
   <%= javascript_include_tag 'admin/shortcut' %>
   <%= javascript_include_tag 'admin/common' %>
+
+  <script>
+      jQuery.noConflict();
+  </script>
 
   <%= stylesheet_link_tag 'formtastic' %>
   <%= stylesheet_link_tag 'humanmsg' %>
