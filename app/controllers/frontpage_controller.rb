@@ -21,6 +21,22 @@ class FrontpageController < ApplicationController
 
   end
   
+  def tweet
+    # note: Twitter "pages" work backwards. 1 is most recent, 2 prior to that, etc.
+    @page = case params[:direction]
+      when "previous" then params[:page].to_i + 1
+      when "next" then params[:page].to_i - 1
+      else 1
+    end
+    @section = TWEET_SECTION
+    @tweets = Twitter::Search.new.from(TWEET_USER_ID).per_page(6).page(@page).fetch.results
+    render :update do |page|
+      page.replace_html 'frontpage-posts', :partial => 'tweets'
+      page.replace_html 'arrows', :partial => 'tweet_nav'
+      page.replace_html 'featureLeft', frontpage_tabs(@section)
+    end
+  end
+  
   def search
     @query = params[:query]
     @results = Post.search @query, :page => params[:page], :per_page => 15

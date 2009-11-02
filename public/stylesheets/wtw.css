@@ -54,7 +54,7 @@ color: #444;
 font-family: Calibri, Arial, sans-serif;
 }
 
-.author {
+.author, .tweet_date {
 color: #888;
 font-size: 12px;
 margin: 0 0 15px 0;
@@ -299,7 +299,7 @@ font-size: 14px;
 color: #fff;
 }
 
-#singlePostSummary {
+#singlePostSummary, #tweets {
 float: left;
 width: 516px;
 height: 214px;
@@ -386,3 +386,15 @@ float: left;
 	margin-bottom: 5px;
 }
 
+
+/* ------- Twitter ---------- */
+
+.tweet {
+  padding-bottom: 7px;
+}
+
+.tweet_date {
+  width: 100% inherit;
+  font-size: 11px;
+	text-align: right !important;
+}

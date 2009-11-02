@@ -1,0 +1,16 @@
+<div id="leftArrow">
+
+  <%= link_to_remote image_tag('arrow_left.jpg', :class => 'arrow'), :url => tweet_path(:page => @page, :direction => 'previous'), :html => {:class => 'ico-prev'} %>
+  
+</div>
+    
+<% unless @page == 1 %>
+
+  <div id="rightArrow">
+  
+    <%= link_to_remote image_tag('arrow_right.jpg', :class => 'arrow'), :url => tweet_path(:page => @page, :direction => 'next'), :html => {:class => 'ico-next'} %>  
+  
+  </div>
+
+<% end -%>
+

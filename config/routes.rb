@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   map.switch_tab '/home/tab/:section', :controller => 'frontpage', :action => 'switch_tab'
   map.search '/search', :controller => 'frontpage', :action => 'search' 
   map.submit '/submit', :controller => 'frontpage', :action => 'submit'
+  map.tweet '/tweet/:page/:direction', :controller => 'frontpage', :action => 'tweet', :direction => 'none', :page => 1
   
   map.resources :sitemap
   map.resources :frontpage

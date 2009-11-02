@@ -1,0 +1,11 @@
+<div id="tweets">
+
+<% @tweets.each do |t| -%>
+
+<li class="tweet"><%= t.text %>
+<span class="tweet_date">&nbsp;&nbsp;<%= t.created_at.to_datetime.strftime("%d %b") %></span>
+</li>
+
+<% end -%>
+
+</div>

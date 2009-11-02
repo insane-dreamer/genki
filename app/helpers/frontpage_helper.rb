@@ -9,7 +9,11 @@ module FrontpageHelper
   def frontpage_tabs(section)
     Section.all.map do |s|
       link_class = s == section ? 'carousel-jumper carousel-selected' : 'carousel-jumper'
-      link_to_remote(s.name.upcase, :url => frontpage_path(:section => s), :html => {:class => link_class})
+      if s.name == 'tweet'
+        link_to_remote("TWEET", :url => tweet_path(:page => 1), :html => {:class => link_class}) 
+      else       
+        link_to_remote(s.name.upcase, :url => frontpage_path(:section => s), :html => {:class => link_class})
+      end  
     end
   end
 
