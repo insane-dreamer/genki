@@ -16,24 +16,28 @@ class FrontpageController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.atom 
+      format.atom
     end
 
   end
   
-  def tweet
-    # note: Twitter "pages" work backwards. 1 is most recent, 2 prior to that, etc.
-    @page = case params[:direction]
-      when "previous" then params[:page].to_i + 1
-      when "next" then params[:page].to_i - 1
-      else 1
+  def tweet  
+    tweets = Tweet.alltweets
+    tweets.per_page = 6
+    if params[:direction] == 'previous'
+      @page = params[:page].to_i + 1
+      @page = tweets.pages.count if @page > tweets.pages.count
+    elsif params[:direction] == 'next'
+      @page = params[:page].to_i - 1
+      @page = 1 if @page <= 0
+    else
+      @page = 1
     end
-    @section = TWEET_SECTION
-    @tweets = Twitter::Search.new.from(TWEET_USER_ID).per_page(6).page(@page).fetch.results
+    @tweets = tweets.pages.find(@page).tweets
     render :update do |page|
       page.replace_html 'frontpage-posts', :partial => 'tweets'
       page.replace_html 'arrows', :partial => 'tweet_nav'
-      page.replace_html 'featureLeft', frontpage_tabs(@section)
+      page.replace_html 'featureLeft', frontpage_tabs('TWEET')
     end
   end
   
