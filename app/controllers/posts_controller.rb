@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+caches_page :show
+
   def show
     if params[:direction]
       @post = params[:direction] == "previous" ? Post.find(params[:id]).previous : Post.find(params[:id]).next

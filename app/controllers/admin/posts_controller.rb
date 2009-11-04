@@ -29,6 +29,7 @@ class Admin::PostsController < Admin::BaseController
   end
   
   def update
+    expire_page :controller => :posts, :action => :show
     if @post.update_attributes(params[:post])
       respond_to do |format|
         format.html {
