@@ -82,7 +82,7 @@ background: url(/images/header_top_bg.gif) bottom left repeat-x;
 
 #headerTop {
 height: 38px;
-width: 849px;
+width: 848px;
 text-align: right;
 position: relative;
 margin: 0 auto;
@@ -217,7 +217,7 @@ margin: 0 auto;
 }
 
 #header {
-width: 849px;
+width: 848px;
 height: 81px;
 background: url(/images/header.jpg) bottom left no-repeat;
 padding: 84px 0 0 0;
@@ -285,17 +285,27 @@ height: 10px;
 background: url(/images/feature_bottom.jpg) top left no-repeat;
 }
 
-#frontpage-posts-wrapper {
+#frontpage_posts_wrapper {
 width: 608px;
 height: 300px;
 overflow: hidden;
 }
 
-#frontpage-posts .slide {
-float: left;
-width: 608px;
-height: 300px;
-}
+div.scroller { 
+	width: 608px; 
+	height: 300px;
+	overflow: hidden;
+	}
+	div.scroller div#scrollcontent {
+		width: 10000px;
+		}
+	div.scroller div.section {
+		width:608px;
+		height:300px;
+		overflow:hidden;
+		float:left;
+		padding:1em;		
+		}
 
 #twoPostSummary {
 float: left;
@@ -351,7 +361,7 @@ line-height: 1px;
 }
 
 #footer {
-width: 839px;
+width: 838px;
 height: 52px;
 background: url(/images/footer.gif) top left no-repeat;
 padding: 35px 10px 0 0;
@@ -406,3 +416,5 @@ float: left;
   font-size: 11px;
 	text-align: right !important;
 }
+
+

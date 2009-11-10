@@ -2,8 +2,9 @@ class FrontpageController < ApplicationController
 
   def index
     @tag = params[:tag]
-    if params[:direction]
-      page = params[:direction] == "previous" ? params[:page].to_i - 1 : params[:page].to_i + 1
+    @direction = params[:direction]
+    if @direction
+      page = @direction == "previous" ? params[:page].to_i - 1 : params[:page].to_i + 1
     else
       page = "last"
     end
@@ -22,6 +23,7 @@ class FrontpageController < ApplicationController
   end
   
   def tweet  
+    # only called with ajax, returns tweets.js.rjs
     tweets = Tweet.alltweets
     tweets.per_page = 6
     if params[:direction] == 'previous'
@@ -34,11 +36,6 @@ class FrontpageController < ApplicationController
       @page = 1
     end
     @tweets = tweets.pages.find(@page).tweets
-    render :update do |page|
-      page.replace_html 'frontpage-posts', :partial => 'tweets'
-      page.replace_html 'arrows', :partial => 'tweet_nav'
-      page.replace_html 'featureLeft', frontpage_tabs('TWEET')
-    end
   end
   
   def search

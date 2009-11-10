@@ -8,9 +8,13 @@
   </div>
   
   <div id="featureRight">
-    <div id="frontpage-posts-wrapper">
-      <div id="frontpage-posts">
-        <%= render :partial => "posts", :locals => {:posts => @posts} %>
+    <div id="frontpage_posts_wrapper">
+      <div id="frontpage_posts">
+        <div class="scroller">
+        <div id="scrollcontent">
+          <%= render :partial => "posts", :locals => {:posts => @posts} %>
+        </div>
+        </div>
       </div>
     </div> 
   </div>
@@ -20,3 +24,4 @@
 <div id="arrows">
   <%= frontpage_navigation(@page,@section) %>
 </div>
+
