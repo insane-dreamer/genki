@@ -10,6 +10,9 @@ namespace :twitter do
     else
       tweets = client.user_timeline(:count => 200)
     end
-    tweets.each { |t| Tweet.create(:tweet => t.text, :tweetid => t.id.to_s, :created_at => t.created_at.to_datetime) }
+    # reverse order when adding to DB so that oldest tweet is added next rather than newest
+    tweets.reverse.each { |t| 
+          Tweet.create(:tweet => t.text, :tweetid => t.id.to_s, :created_at => t.created_at.to_datetime)
+        }
   end
 end
