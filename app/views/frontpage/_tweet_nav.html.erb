@@ -1,10 +1,14 @@
-<div id="leftArrow">
+<% if @has_previous %>
 
-  <%= link_to_remote image_tag('arrow_left.jpg', :class => 'arrow'), :url => tweet_path(:page => @page, :direction => 'previous'), :html => {:class => 'ico-prev'} %>
+  <div id="leftArrow">
   
-</div>
+    <%= link_to_remote image_tag('arrow_left.jpg', :class => 'arrow'), :url => tweet_path(:page => @page, :direction => 'previous'), :html => {:class => 'ico-prev'} %>
     
-<% unless @page == 1 %>
+  </div>
+      
+<% end -%>
+
+<% if @has_next %>
 
   <div id="rightArrow">
   
@@ -13,4 +17,3 @@
   </div>
 
 <% end -%>
-

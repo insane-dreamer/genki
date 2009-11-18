@@ -36,6 +36,9 @@ class FrontpageController < ApplicationController
       @page = 1
     end
     @tweets = tweets.pages.find(@page).tweets
+    # previous == next because tweets are ordered in reverse
+    @has_previous = true if tweets.pages.find(@page).next
+    @has_next = true if tweets.pages.find(@page).previous
   end
   
   def search
