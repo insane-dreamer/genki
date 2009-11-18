@@ -12,3 +12,8 @@ db/*.sqlite3
 *.esproj
 config/*.sphinx.conf
 db/sphinx
+.idea/
+clips
+config/initializers/twitter.rb
+public/2009/
+
