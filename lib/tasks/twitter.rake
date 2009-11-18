@@ -11,7 +11,7 @@ namespace :twitter do
     else
       tweets = client.user_timeline(:count => 200)
     end
-    @url = /(http:\/\/\w*\.[\w\/]*)/
+    @url = /(http:\/\/\w*\.[\w\/\.-]*)/
     # reverse order when adding to DB so that oldest tweet is added next rather than newest
     tweets.reverse.each { |t| 
           # match URLs and make into links
