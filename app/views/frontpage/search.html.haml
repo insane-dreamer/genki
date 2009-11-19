@@ -1,0 +1,15 @@
+= content_for(:page_title) do
+  WTW :: Search Results: #{@query}
+
+#fullPost
+  %p #{@results.total_entries} result(s) when searching for #{@query}:
+  %ul
+    - for result in @results    
+      %li.result
+        = link_to result.title, post_path(result) 
+        %small (#{result.author}, #{format_post_date(result.published_at)})
+        %br
+        / strip_html_tags is a custom extension to String. See /lib/core_extensions.
+        %small #{result.body_html.strip_html_tags.slice(0..250)}...
+
+  = will_paginate @results

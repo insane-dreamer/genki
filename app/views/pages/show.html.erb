@@ -1,8 +1,0 @@
-<% content_for(:page_title) do -%>
-<%=h page_title(@page) -%>
-<% end -%>
-
-<div id="fullPost">
-  <%= @page.body_html.untaint %>
-</div>
-

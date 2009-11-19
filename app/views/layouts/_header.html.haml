@@ -1,0 +1,9 @@
+#headerWrap
+  = render :partial => "layouts/search"
+  = render :partial => "layouts/submit"
+  #headerTop
+    #flash= show_flash() if ( flash[:notice] || flash[:error] )
+    = link_to_function 'SUBMIT', "Effect.toggle('submit','blind', {duration: 0.5})", :style => "background:none;" 
+    = link_to_function 'SEARCH', "Effect.toggle('search','blind', {duration: 0.5})"
+    = link_to "ABOUT", page_path(Page.find_by_slug('about'))
+    = image_tag('loading.gif', :id => 'spinner', :style => 'display:none;')

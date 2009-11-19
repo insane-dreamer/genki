@@ -1,0 +1,24 @@
+%ol.commentlist
+  - @post.approved_comments.each do |comment|
+    %li{:class => cycle('alt',''), :id => "comment-#{comment.id.to_s}"}
+      = render :partial => 'comments/comment', :locals => {:comment => comment}
+
+%h2 Post a comment
+- unless @comment.errors.empty?
+  .errors
+    %h3 Comment not added!
+    %ul
+      - @comment.errors.sort_by(&:first).each do |error|
+        %li= format_comment_error(error)
+
+- form_for([@post, @comment]) do |form|
+  %div
+    %p 
+      = form.text_field 'author'
+      %label(for="comment_author")
+        %small Name or #{link_to "OpenID", "http://openidexplained.com/"} (required)
+    %p 
+      = form.text_area 'body'
+      %br
+      %small #{link_to "Markdown enabled", "http://daringfireball.net/projects/markdown/syntax"}
+    %p= submit_tag "Add Comment"

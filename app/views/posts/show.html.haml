@@ -1,0 +1,11 @@
+- content_for(:head) do
+  = javascript_include_tag 'common'
+  = javascript_include_tag 'live-comment-preview'
+
+- content_for(:page_title) do
+  = h post_title(@post)
+
+#fullPost= render :partial => 'post', :locals => {:post => @post}
+#arrows= single_post_navigation(@post)
+
+= render :partial => "comments"

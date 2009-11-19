@@ -1,0 +1,16 @@
+#submit(style="display:none; overflow:hidden; height: 133px;")
+  %h3 Submit Content
+  - form_remote_tag :url => '/submit' do  
+    #submit_left
+      %span.label Your Name
+      %br
+      = text_field_tag 'name'
+      %br
+      %span.label Your Email Address
+      %br
+      = text_field_tag 'email'
+    = image_submit_tag 'send.gif', :id => 'submit_submit_button'    
+    #submit_right
+      %span.label Content 
+      %br
+      = text_area_tag 'content'
