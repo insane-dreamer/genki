@@ -1,0 +1,9 @@
+page << "$('name').value = ''"
+page << "$('email').value = ''"
+page << "$('content').value = ''"
+page.hide :submit
+page.replace_html :flash, content_tag(:div, "Thank you for your submission!", :id => 'flash-message')
+page.visual_effect :highlight, "flash-message", {:duration => 1}
+page.delay(2) do 
+  page.hide 'flash-message'
+end

@@ -1,7 +1,7 @@
 <div id="submit" style="display:none; overflow:hidden; height: 133px;">
 <h3>Submit Content</h3>
 
-<% form_tag '/submit' do -%>
+<% form_remote_tag :url => '/submit' do -%>
 
   <div id="submit_left">
     <span class="label">Your Name</span><br />

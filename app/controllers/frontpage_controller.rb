@@ -47,11 +47,16 @@ class FrontpageController < ApplicationController
   end
   
 	def submit
-    Notifier.deliver_user_submission(params)
-    flash[:notice] = "Thank you for your submission!" 
-    redirect_to root_path
+	  if params[:name].blank? || params[:email].blank?
+      render :update do |page|
+        page.replace_html :flash, content_tag(:div, "Please include your name and email. Thanks!", :id => 'flash-message')
+        page.visual_effect :highlight, "flash-message", {:duration => 1}
+      end
+    else
+      Notifier.deliver_user_submission(params)
+      render :partial => 'submit_notice'
+    end
   end
-				
   
   private
 
