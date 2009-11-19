@@ -47,9 +47,9 @@ class FrontpageController < ApplicationController
   end
   
 	def submit
-	  if params[:name].blank? || params[:email].blank?
+    if error = verify_submission(params)
       render :update do |page|
-        page.replace_html :flash, content_tag(:div, "Please include your name and email. Thanks!", :id => 'flash-message')
+        page.replace_html :flash, content_tag(:div, error, :id => 'flash-message')
         page.visual_effect :highlight, "flash-message", {:duration => 1}
       end
     else
@@ -59,6 +59,17 @@ class FrontpageController < ApplicationController
   end
   
   private
+
+  def verify_submission(sub)
+    email = Regexp.new(%r{^(?:[_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-zA-Z0-9\-\.]+)*(\.[a-z]{2,4})$}i)
+    case 
+      when sub[:name].blank? || sub[:email].blank?
+        @error = "Please include your name and email. Thanks!"
+      when email.match(sub[:email].strip).nil?
+        @error = "Invalid email address. Please check and resubmit."
+    end
+    return @error
+  end
 
   def get_page_and_posts(section, pg)
     allposts = section.posts.scoped(:order => 'created_at ASC')
