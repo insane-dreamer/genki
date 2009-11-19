@@ -1,6 +1,6 @@
 %h2= h(post.title)
 .author
-  = h(post.author), format_post_date(post.published_at)
+  #{h(post.author)}, #{format_post_date(post.published_at)}
   - if post.approved_comments.size > 0 
     (#{ link_to(pluralize(post.approved_comments.size, "comment"), post_path(post, :anchor => 'comments')) })
 .postbody= post.body_html.untaint
