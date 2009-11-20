@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
     end
 
     if session[:pending_comment].nil? && @comment.save
-      Notifier.deliver_new_comment(@comment)
+      Notifier.deliver_new_comment(@comment) unless @comment.post.author_email.blank?
       redirect_to post_path(@post)
     else
       render :template => 'posts/show'
