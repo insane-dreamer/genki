@@ -6,6 +6,7 @@
   <%= form.input :title -%>
   <%= form.input :section_id %>
   <%= form.input :author -%>
+  <%= form.input :author_email, :required => false, :hint => 'Used to notify author of comments.' -%>  
   <%= form.input :summary, :required => false, :hint => "(If Summary is left empty, Body will be displayed on front page.)" -%>
   <%= form.input :body, :hint => "<a href='http://daringfireball.net/projects/markdown/syntax'>Markdown enabled</a>. Use Ctrl+E to switch between preview and edit mode." -%>
   <%= form.input :tag_list, :as => :string, :required => false, :hint => 'Comma separated: ruby, rails&hellip;' -%>

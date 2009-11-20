@@ -454,6 +454,7 @@ float: left;
 
 div.comment div.comment {
   padding: 5px 0 10px 20px;
+  color: lightgrey;
 }
 
 /* ------- Archive page ---------- */

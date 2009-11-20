@@ -36,8 +36,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :sitemap
   map.resources :frontpage
-  map.resources :pages
+  map.resources :pages 
 
+  map.post_full_path ':year/:month/:day/:slug', :controller => 'posts', :action => 'show', :requirements => { :year => /\d+/ }
   map.connect ':year/:month/:day/:slug/comments', :controller => 'comments', :action => 'index'
   map.connect ':year/:month/:day/:slug/comments/new', :controller => 'comments', :action => 'new'
   map.connect ':year/:month/:day/:slug/comments.:format', :controller => 'comments', :action => 'index'

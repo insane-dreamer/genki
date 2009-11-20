@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta(content="text/html; charset=UTF-8" http-equiv="Content-Type")
+  %body
+    %h2 New comment on your "Win the World" article
+    %p
+    %p 
+      Someone commented on an article that you (or your Home) wrote that was posted on the
+      %a(href="http://wtw.familymembers.com") Win the world
+      site.
+    %br
+    %p Article titled: #{@post.title}
+    %br
+    %p Comment from: #{@comment.author}.
+    %p Country: #{@comment.country.blank? ? 'Unspecified' : @comment.country}
+    %p Posted on #{@comment.created_at.strftime("%d %B")}
+    %br 
+    = @comment.body
+    %br
+    = link_to("Click here", @url) + " to see all the comments on the article. (If a question was asked, you may want to post a response.)"
+    %br
+    %p Have a great day! 
+    %p Love, the Win the World team 
