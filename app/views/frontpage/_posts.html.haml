@@ -7,9 +7,9 @@
           #{post.author}, #{format_post_date(post.published_at)} #{number_comments(post)}
         - if !post.summary.empty?
           .summary= post.summary_html.untaint
-          = link_to image_tag('more.gif', {:class => 'more'}), post_path(post)
         - else
           .summary= post.body_html.untaint
+        = link_to image_tag('more.gif', {:class => 'more'}), post_path(post)
         / 
           <div class="meta">
           <% unless post.tags.empty? -%>
