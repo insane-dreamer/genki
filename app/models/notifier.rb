@@ -14,7 +14,21 @@ class Notifier < ActionMailer::Base
     from       "wtw@thefamily.org"
     subject    "New comment on your WTW post"
     sent_on    Time.now
-    body       :comment => comment, :post => @post, :url => post_full_path_url(:year => @post.created_at.year.to_s, :month => @post.created_at.strftime("%m"), :day => @post.created_at.strftime("%d"), :slug => @post.slug, :host => "wtw.familymembers.com") + "#comments"
+    body       :comment => comment, :post => @post, :url => gen_post_url(@post) + "#comments"
   end
 
+  def new_post(post)
+    recipients post.author_email
+    from       "wtw@thefamily.org"
+    subject    "New WTW article from you!"
+    sent_on    Time.now
+    body       :post => post, :url => gen_post_url(post)
+  end
+
+protected
+
+  def gen_post_url(post)
+      post_full_path_url(:year => post.created_at.year.to_s, :month => post.created_at.strftime("%m"), :day => post.created_at.strftime("%d"), :slug => post.slug, :host => "wtw.familymembers.com")  
+  end
+  
 end
