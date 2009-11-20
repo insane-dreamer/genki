@@ -18,8 +18,10 @@
   - form_for([@post, @comment]) do |form|
     %p 
       = form.text_field 'author'
-      %label(for="comment_author")
-        %small.author Name or #{link_to "OpenID", "http://openidexplained.com/"} (required)
+      %small.author Name or #{link_to "OpenID", "http://openidexplained.com/"} (required)
+    %p 
+      = form.text_field 'country'
+      %small.author Country (optional)
     %p 
       = form.text_area 'body'
       %br

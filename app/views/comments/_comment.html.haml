@@ -1,4 +1,7 @@
 = link_to image_tag('pencil.png'), "#comment-#{comment.id}" 
 = author_link(comment)
-%small.author (#{format_comment_date(comment.created_at)})
+&nbsp;
+%small.author 
+  = comment.country + ',' if comment.country
+  = format_comment_date(comment.created_at)
 .comment= comment.body_html.untaint

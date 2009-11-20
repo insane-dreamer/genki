@@ -63,7 +63,7 @@ class Comment < ActiveRecord::Base
 
   class << self
     def protected_attribute?(attribute)
-      [:author, :body].include?(attribute.to_sym)
+      [:author, :body, :country].include?(attribute.to_sym)
     end
     
     def new_with_filter(params)
