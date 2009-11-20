@@ -1,64 +1,57 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC
-    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
-    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg-flat.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+!!! XML
+!!!
+%html
+  %head
+    %meta(http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8")
+    
+    %title= h(config[:title]) + '- Admin'
   
-  <title><%=h config[:title] %> - Admin</title>
-
-  <%= javascript_include_tag :defaults %>
-
-  <%= javascript_include_tag 'jquery.js' %>
-  <%= javascript_include_tag 'jquery.livequery.js' %>
-  <%= javascript_include_tag 'jquery.form.js' %>
-  <%= javascript_include_tag 'jquery.easing.1.3.js' %>
-  <%= javascript_include_tag 'humanmsg' %>
-  <%= javascript_include_tag 'prettify' %>
-  <%= javascript_include_tag 'admin/shortcut' %>
-  <%= javascript_include_tag 'admin/common' %>
-
-  <script>
+    = javascript_include_tag :defaults
+    = javascript_include_tag 'jquery.js'
+    = javascript_include_tag 'jquery.livequery.js'
+    = javascript_include_tag 'jquery.form.js'
+    = javascript_include_tag 'jquery.easing.1.3.js'
+    = javascript_include_tag 'humanmsg'
+    = javascript_include_tag 'prettify'
+    = javascript_include_tag 'admin/shortcut'
+    = javascript_include_tag 'admin/common'
+  
+    :javascript
       jQuery.noConflict();
-  </script>
+  
+    = stylesheet_link_tag 'formtastic'
+    = stylesheet_link_tag 'humanmsg'
+    = stylesheet_link_tag 'admin'
+    = stylesheet_link_tag 'prettify'
 
-  <%= stylesheet_link_tag 'formtastic' %>
-  <%= stylesheet_link_tag 'humanmsg' %>
-  <%= stylesheet_link_tag 'admin' %>
-  <%= stylesheet_link_tag 'prettify' %>
-  <%= yield(:head) %>
+    = yield(:head)
+  
+    - if flash[:notice]
+      :javascript
+        jQuery(document).ready(function() {
+          humanMsg.displayMsg('<%= escape_javascript(h(flash[:notice])) %>');
+        })  
 
-  <% if flash[:notice] -%>
-  <script>
-    jQuery(document).ready(function() {
-      humanMsg.displayMsg('<%= escape_javascript(h(flash[:notice])) %>');
-    })  
-  </script>
-  <% end -%>
-
-</head>
-<body>
-  <div id="page">
-    <div id="content">
-      <%= yield %>
-    </div>
-    <div id="nav">
-      <ul>
-        <li><%= nav_link_to("Dashboard", admin_dashboard_path,  :accesskey => '1') %></li>
-        <li><%= nav_link_to("Posts",     admin_posts_path,      :accesskey => '2') %> <%= nav_link_to("(+)", new_admin_post_path, :access_key => 'n') %></li>
-        <li><%= nav_link_to("Pages",     admin_pages_path,      :accesskey => '3') %> <%= nav_link_to("(+)", new_admin_page_path, :access_key => 'p') %></li>
-        <li><%= nav_link_to("Uploads",   admin_uploads_path,    :accesskey => '4') %> <%= nav_link_to("(+)", new_admin_upload_path, :access_key => 'u') %></li>
-        <li><%= nav_link_to("Comments",  admin_comments_path,   :accesskey => '5') %></li>
-        <li><%= nav_link_to("Tags",      admin_tags_path,       :accesskey => '6') %></li>
-        <li><%= nav_link_to("Actions",   admin_undo_items_path, :accesskey => '7') %></li>
-        <li><%= nav_link_to("Health",    admin_health_path, :accesskey => '8') %></li>
-        <li class="separator">&nbsp;</li>
-        <li><%= link_to("Logout", admin_session_path, :accesskey => 'l', :method => :delete) %></li>
-        <li><%= link_to("View Site", '/',             :accesskey => 'v', :title => 'View Site') %></li>
-      </ul>
-    </div>
-  </div>  
-</body>
-</html>
+  %body
+    #page
+      #content
+        = yield
+      #nav
+        %ul
+          %li= nav_link_to("Dashboard", admin_dashboard_path,  :accesskey => '1')
+          %li
+            = nav_link_to("Posts",     admin_posts_path,      :accesskey => '2') 
+            = nav_link_to("(+)", new_admin_post_path, :access_key => 'n')
+          %li
+            = nav_link_to("Pages",     admin_pages_path,      :accesskey => '3') 
+            = nav_link_to("(+)", new_admin_page_path, :access_key => 'p')
+          %li
+            = nav_link_to("Uploads",   admin_uploads_path,    :accesskey => '4') 
+            = nav_link_to("(+)", new_admin_upload_path, :access_key => 'u')
+          %li= nav_link_to("Comments",  admin_comments_path,   :accesskey => '5')
+          %li= nav_link_to("Tags",      admin_tags_path,       :accesskey => '6')
+          %li= nav_link_to("Actions",   admin_undo_items_path, :accesskey => '7')
+          %li= nav_link_to("Health",    admin_health_path, :accesskey => '8')
+          %li.separator &nbsp;
+          %li= link_to("Logout", admin_session_path, :accesskey => 'l', :method => :delete)
+          %li= link_to("View Site", '/',             :accesskey => 'v', :title => 'View Site')
