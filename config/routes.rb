@@ -33,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => 'frontpage', :action => 'search' 
   map.submit '/submit', :controller => 'frontpage', :action => 'submit'
   map.tweet '/tweet/:page/:direction', :controller => 'frontpage', :action => 'tweet', :direction => 'none', :page => 1
+  map.about '/about', :controller => 'pages', :action => 'show', :id => 'about'
   
   map.resources :sitemap
   map.resources :frontpage
