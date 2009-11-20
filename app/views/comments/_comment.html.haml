@@ -1,5 +1,4 @@
-%cite #{author_link(comment)} says:
-%br
-%small.commentmetadata 
-  %a(href="#comment-#{comment.id}" title="")= format_comment_date(comment.created_at) 
-%p= comment.body_html.untaint
+= link_to image_tag('pencil.png'), "#comment-#{comment.id}" 
+= author_link(comment)
+%small.author (#{format_comment_date(comment.created_at)})
+.comment= comment.body_html.untaint

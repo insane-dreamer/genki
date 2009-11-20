@@ -4,9 +4,7 @@
       %div(id=section_div_id)
         %h2= post.title
         .author
-          #{post.author}, #{format_post_date(post.published_at)}
-        - if post.approved_comments.size > 0
-          (#{link_to(pluralize(post.approved_comments.size, "comment"), post_path(post, :anchor => 'comments'))})
+          #{post.author}, #{format_post_date(post.published_at)} #{number_comments(post)}
         - if !post.summary.empty?
           .summary= post.summary_html.untaint
           = link_to image_tag('more.gif', {:class => 'more'}), post_path(post)

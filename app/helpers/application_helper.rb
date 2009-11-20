@@ -18,6 +18,12 @@ module ApplicationHelper
       'base'   => error.last
     }[error.first]
   end
+
+  def number_comments(post)
+    if post.approved_comments.size > 0 
+      "(#{ link_to(pluralize(post.approved_comments.size, "comment"), post_path(post, :anchor => 'comments')) })"
+    end
+  end
   
   def host_url
     request.protocol + request.host

@@ -12,6 +12,11 @@ padding: 0;
 a {
 border: none !important;
 outline: none;
+color: white;
+}
+
+a:hover {
+	color: black;
 }
 
 img {
@@ -55,9 +60,23 @@ font-family: Calibri, Arial, sans-serif;
 }
 
 .author, .tweet_date {
-color: #888;
-font-size: 12px;
-margin: 0 0 15px 0;
+  color: #888;
+  font-size: 12px;
+  margin: 0 0 15px 0;
+}
+
+.author a {
+  color: #888;
+	text-decoration: none;
+}
+
+.author a:hover {
+  color: white;	
+  text-decoration: underline;
+}
+
+.large_link a {
+	font: 14px sans-serif !important;
 }
 
 img.more:hover {
@@ -164,12 +183,6 @@ margin: 0px auto;
 	padding-top: 5px;
 }
 
-#submit_submit_button {
-	float: right;
-	background: none;
-	padding-right: 10px !important;
-}
-
 textarea#content {
 	padding: 0;
   width: 530px;
@@ -196,6 +209,11 @@ margin: 0px auto;
 	padding: 0;
 	background: none;
 	border: none !important;
+}
+
+#submit_submit_button {
+	float: right;
+	padding-right: 10px !important;
 }
 
 .result {
@@ -276,7 +294,7 @@ width: 608px;
 float: right;
 }
 
-#fullPost, #sectionPage {
+#fullPost, #sectionPage, #comments {
 width: 748px;
 background: #575c61 url(/images/feature_long_bg.jpg) top left no-repeat;
 padding: 30px;
@@ -339,7 +357,7 @@ height: 27px;
 padding: 15px 0 0 0;
 }
 
-#arrows img.arrow:hover {
+#arrows img:hover, #frontpage img:hover {
 filter:alpha(opacity=65);   
 opacity: 0.65;
 }
@@ -387,7 +405,8 @@ width: 40px;
 float: left;
 }
 
-/* ------- Posts ---------- */
+/* ------- Posts/Comments ---------- */
+
 .summary {
 }
 
@@ -399,9 +418,42 @@ float: left;
 	padding: 1px;
 }
 
-.postbody img:hover {
+.postbody img:hover, #new_comment input:hover, #comments img:hover {
   filter:alpha(opacity=65);   
   opacity: 0.65;
+}
+
+#comments {
+	background: #575c61 url(/images/comments_bg.jpg) bottom left no-repeat;
+	margin: 7px 0 0 0;
+}
+
+#new_comment_link a {
+	color: grey;
+  font: 14px sans-serif;
+  text-decoration: none;
+}
+
+#new_comment_link a:hover {
+	color: white;
+	text-decoration: underline;
+}
+
+#commentlist img {
+	height: 12px;
+}
+
+#new_comment {
+	padding-top: 10px;
+}
+
+#new_comment textarea#comment_body {
+	width: 400px;
+	height: 100px;
+}
+
+div.comment div.comment {
+  padding: 5px 0 10px 20px;
 }
 
 /* ------- Archive page ---------- */
