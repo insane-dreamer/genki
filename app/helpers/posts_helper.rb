@@ -7,7 +7,7 @@ module PostsHelper
 
   def single_post_navigation(post)
     nav = previous_post_button(post)
-    nav << content_tag(:div, link_to(image_tag('archives.gif'), section_path(post.section)), :id => 'middleNavButton')
+    nav << middle_post_button(post)
     nav << next_post_button(post)
   end
 
@@ -19,6 +19,10 @@ module PostsHelper
   def next_post_button(post)
     arrow = post.next ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow'), :url => {:action => 'show', :id => post.id, :direction => 'next'}, :html => {:class => 'ico-next'}) : "&nbsp;"    
     content_tag :div, arrow, :id => 'rightArrow'
+  end
+
+  def middle_post_button(post)
+    content_tag(:div, link_to(image_tag(post.section.name.strip+'.gif'), frontpage_path(:section => post.section)), :id => 'middleNavButton')  
   end
 
 end

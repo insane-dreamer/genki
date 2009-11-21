@@ -2,7 +2,7 @@ module FrontpageHelper
 
   def frontpage_navigation(page,section)
     nav = previous_page_button(page,section)
-    nav << content_tag(:div, link_to(image_tag('archives.gif'), section_path(section)), :id => 'middleNavButton')
+    nav << middle_page_button(section)
     nav << next_page_button(page,section)
   end
 
@@ -23,6 +23,10 @@ module FrontpageHelper
   def next_page_button(page,section)
     arrow = page.next ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow'), :url => change_page_path(:page => page, :section => section, :direction => 'next'), :html => {:class => 'ico-next'}) : "&nbsp;"
     content_tag :div, arrow, :id => 'rightArrow'
+  end
+  
+  def middle_page_button(section)
+    content_tag(:div, link_to(image_tag('archives.gif'), section_path(section)), :id => 'middleNavButton')
   end
 
   def section_div_id
