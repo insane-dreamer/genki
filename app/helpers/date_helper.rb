@@ -10,4 +10,9 @@ module DateHelper
   def format_comment_date(date)
     date.strftime("%d %b")
   end
+
+  def format_post_short_date(date)
+    date.strftime("%b. %d, '%y")
+  end
+
 end
