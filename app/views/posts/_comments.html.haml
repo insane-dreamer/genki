@@ -3,7 +3,8 @@
     %div{:class => ('comment ' + cycle('alt','')), :id => "comment-#{comment.id.to_s}"}
       = render :partial => 'comments/comment', :locals => {:comment => comment}
 
-= content_tag(:br) if @post.approved_comments.size > 0
+- if @post.approved_comments.size > 0
+  %br
 
 .author.large_link(style="margin:0;")= link_to_function 'HAVE A SAY', "Effect.toggle('new_comment','blind', {duration: 0.5})"
 

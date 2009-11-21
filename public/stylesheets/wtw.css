@@ -331,24 +331,22 @@ div.scroller {
 		padding:1em;		
 		}
 
-#twoPostSummary {
+#singlePostSummary, #tweets, #twoPostSummary {
 float: left;
-width: 236px;
+width: 516px;
 height: 214px;
-padding: 30px 0 0 44px;
+padding: 20px 0 0 44px;
 font-family: Calibri, Arial, sans-serif;
 font-size: 14px;
 color: #fff;
 }
 
-#singlePostSummary, #tweets {
-float: left;
-width: 516px;
-height: 214px;
-padding: 30px 0 0 44px;
-font-family: Calibri, Arial, sans-serif;
-font-size: 14px;
-color: #fff;
+#twoPostSummary {
+width: 236px;
+}
+
+#tweets {
+	padding-top: 30px;
 }
 
 #arrows {
