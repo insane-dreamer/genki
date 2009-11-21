@@ -10,7 +10,7 @@ class Notifier < ActionMailer::Base
 
   def new_comment(comment)
     @post = comment.post
-    recipients comment.post.author_email
+    recipients [comment.post.author_email, "wtw@thefamily.org"]
     from       "wtw@thefamily.org"
     subject    "New comment on your WTW post"
     sent_on    Time.now
