@@ -376,6 +376,23 @@ float: left;
 margin: 0 0 0 327px;
 }
 
+#homeButton {
+  width: 35px;
+	float: left;
+	margin: 0 0 0 332px;
+}
+
+#archivesButton {
+  width: 35px;
+	float: left;
+  margin: 0 0 0 20px;
+}
+
+#archivesButton img, #homeButton img {
+	width: 35px;
+	height: 27px;
+}
+
 #clear {
 clear: both;
 height: 1px;

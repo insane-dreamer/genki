@@ -22,7 +22,9 @@ module PostsHelper
   end
 
   def middle_post_button(post)
-    content_tag(:div, link_to(image_tag(post.section.name.strip+'.gif'), frontpage_path(:section => post.section)), :id => 'middleNavButton')  
+    nav = content_tag(:div, link_to(image_tag('home.gif'), frontpage_path(:section => post.section)), :id => 'homeButton')
+    nav << content_tag(:div, link_to(image_tag('archives_small.gif'), section_path(post.section)), :id => 'archivesButton')
+    return nav
   end
 
 end
