@@ -1,9 +1,10 @@
 module FrontpageHelper
 
   def frontpage_navigation
-    nav = previous_page_button
+    nav = ""
+    nav << previous_page_button unless @posts.empty?
     nav << middle_page_button
-    nav << next_page_button
+    nav << next_page_button unless @posts.empty?
   end
 
   def frontpage_tabs(section)
