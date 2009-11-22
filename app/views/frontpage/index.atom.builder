@@ -1,11 +1,10 @@
 atom_feed(
   :url         => rss_path(:format => 'atom', :only_path => false), 
-  :root_url    => root_path,
-  :schema_date => '2008'
+  :root_url    => root_path
 ) do |feed|
   feed.title     posts_title(@tag)
   feed.updated   @posts.empty? ? Time.now.utc : @posts.collect(&:edited_at).max
-  feed.generator "Win the World", "uri" => "http://wintheworld.familymembers.com"
+  feed.generator "Win the World", "uri" => "http://wtw.familymembers.com"
 
   feed.author do |xml|
     xml.name  author.name
