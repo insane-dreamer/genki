@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'frontpage', :action => 'index'
   
   map.frontpage '/home/section/:section', :controller => 'frontpage', :action => 'index'
-  map.change_page '/home/section/:section/page/:page/:direction', :controller => 'frontpage', :action => 'index'
+  map.change_page '/home/section/:section/post/:post/:direction', :controller => 'frontpage', :action => 'index'
   map.switch_tab '/home/tab/:section', :controller => 'frontpage', :action => 'switch_tab'
   map.search '/search', :controller => 'frontpage', :action => 'search' 
   map.submit '/submit', :controller => 'frontpage', :action => 'submit'

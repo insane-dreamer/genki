@@ -1,4 +1,9 @@
 .section
+  -# This is needed for cases where there's only one post and we want it on the right-hand side
+  - if posts.size == 1 && @section.per_page == 2 
+    .post
+      %div(id=section_div_id)
+        &nbsp;
   - posts.each do |post|
     %div(class="post post-#{post.id}")
       %div(id=section_div_id)

@@ -45,6 +45,11 @@ class Post < ActiveRecord::Base
   end
 
   class << self
+
+    def latest(section,num=1)
+      Post.all(:conditions => ["section_id = ?", section], :limit => num, :order => "created_at DESC")
+    end
+
     def build_for_preview(params)
       post = Post.new(params)
       post.generate_slug
@@ -125,12 +130,14 @@ class Post < ActiveRecord::Base
     self.slug.slugorize!
   end
 
-  def next
-    Post.find(:first, :conditions => ["id > ? and section_id = ?", self.id, self.section_id], :limit => 1, :order => "id")
+  def next(num=1)
+    # finds next within current section only
+    Post.all(:conditions => ["id > ? and section_id = ?", self.id, self.section_id], :limit => num, :order => "id")
   end
   
-  def previous
-    Post.find(:first, :conditions => ["id < ? and section_id = ?", self.id, self.section_id], :limit => 1, :order => "id DESC")
+  def previous(num=1)
+    # finds previous within current section only
+    Post.all(:conditions => ["id < ? and section_id = ?", self.id, self.section_id], :limit => num, :order => "id DESC")
   end
 
   # TODO: Contribute this back to acts_as_taggable_on_steroids plugin

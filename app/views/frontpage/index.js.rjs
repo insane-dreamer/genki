@@ -1,5 +1,5 @@
 page.replace_html 'featureLeft', frontpage_tabs(@section)
-page.replace_html 'arrows', frontpage_navigation(@page,@section)
+page.replace_html 'arrows', frontpage_navigation
 
 page.visual_effect (:opacity, 'scrollcontent', { :from => 1.0, :to => 0.0, :duration => 0.5 })
 page.delay(0.5) do

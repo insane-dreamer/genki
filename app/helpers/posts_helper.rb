@@ -12,12 +12,12 @@ module PostsHelper
   end
 
   def previous_post_button(post)
-    arrow = post.previous ? link_to_remote(image_tag('arrow_left.jpg', :class => 'arrow'), :url => {:action => 'show', :id => post.id, :direction => 'previous'}, :html => {:class => 'ico-prev'}) : "&nbsp;"
+    arrow = !post.previous.empty? ? link_to_remote(image_tag('arrow_left.jpg', :class => 'arrow'), :url => {:action => 'show', :id => post.id, :direction => 'previous'}, :html => {:class => 'ico-prev'}) : "&nbsp;"
     content_tag :div, arrow, :id => 'leftArrow'
   end
 
   def next_post_button(post)
-    arrow = post.next ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow'), :url => {:action => 'show', :id => post.id, :direction => 'next'}, :html => {:class => 'ico-next'}) : "&nbsp;"    
+    arrow = !post.next.empty? ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow'), :url => {:action => 'show', :id => post.id, :direction => 'next'}, :html => {:class => 'ico-next'}) : "&nbsp;"    
     content_tag :div, arrow, :id => 'rightArrow'
   end
 

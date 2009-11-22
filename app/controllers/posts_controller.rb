@@ -4,7 +4,8 @@ caches_page :show
 
   def show
     if params[:direction]
-      @post = params[:direction] == "previous" ? Post.find(params[:id]).previous : Post.find(params[:id]).next
+      # previous/next methods return an array
+      @post = params[:direction] == "previous" ? Post.find(params[:id]).previous.first : Post.find(params[:id]).next.first
     else
       @post = Post.find_by_permalink(*([:year, :month, :day, :slug].collect {|x| params[x] } << {:include => [:approved_comments, :tags]}))
     end

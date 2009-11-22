@@ -1,9 +1,9 @@
 module FrontpageHelper
 
-  def frontpage_navigation(page,section)
-    nav = previous_page_button(page,section)
-    nav << middle_page_button(section)
-    nav << next_page_button(page,section)
+  def frontpage_navigation
+    nav = previous_page_button
+    nav << middle_page_button
+    nav << next_page_button
   end
 
   def frontpage_tabs(section)
@@ -15,18 +15,18 @@ module FrontpageHelper
     nav << link_to_remote("TWEET", :url => tweet_path(:page => 1), :html => {:class => link_class}) 
   end
 
-  def previous_page_button(page,section)
-    arrow = page.previous ? link_to_remote(image_tag('arrow_left.jpg', :class => 'arrow'), :url => change_page_path(:page => page, :section => section, :direction => 'previous'), :html => {:class => 'ico-prev'}) : "&nbsp;"
+  def previous_page_button
+    arrow = !@posts.first.previous.empty? ? link_to_remote(image_tag('arrow_left.jpg', :class => 'arrow'), :url => change_page_path(:post => @posts.first, :section => @section, :direction => 'previous'), :html => {:class => 'ico-prev'}) : "&nbsp;"
     content_tag :div, arrow, :id => 'leftArrow'
   end
 
-  def next_page_button(page,section)
-    arrow = page.next ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow'), :url => change_page_path(:page => page, :section => section, :direction => 'next'), :html => {:class => 'ico-next'}) : "&nbsp;"
+  def next_page_button
+    arrow = !@posts.last.next.empty? ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow'), :url => change_page_path(:post => @posts.last, :section => @section, :direction => 'next'), :html => {:class => 'ico-next'}) : "&nbsp;"
     content_tag :div, arrow, :id => 'rightArrow'
   end
   
-  def middle_page_button(section)
-    content_tag(:div, link_to(image_tag('archives.gif'), section_path(section)), :id => 'middleNavButton')
+  def middle_page_button
+    content_tag(:div, link_to(image_tag('archives.gif'), section_path(@section)), :id => 'middleNavButton')
   end
 
   def section_div_id
