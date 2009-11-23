@@ -3,7 +3,7 @@
 
 #sectionPage
   %h2 #{@section.name.upcase} Archives
-  
+  %br
   - if @months.empty?
     %p Once posts are added they will start to appear in this archive.
   - else   
@@ -15,3 +15,11 @@
             = link_to(post.title, post_path(post))
             = unless post.tags.empty?
               %span.tags (#{linked_tag_list(post.tags)})
+
+#arrows
+  - if @previous
+    .arrow#leftArrow= link_to (image_tag('arrow_left.jpg', :class => 'arrow'), section_path(@section, :page => @previous), :html => {:class => 'ico-prev'}) 
+  - else
+    &nbsp;
+  - if @next
+    .arrow#rightArrow= link_to (image_tag('arrow_right.jpg', :class => 'arrow'), section_path(@section, :page => @next), :html => {:class => 'ico-next'})
