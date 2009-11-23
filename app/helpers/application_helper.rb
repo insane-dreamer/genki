@@ -44,4 +44,15 @@ module ApplicationHelper
     html << content_tag(:script, "setTimeout(\"$('flash-message').fade({duration: #{options[:fade]}});\", #{options[:display]*1000}); return false;")
   end
 
+  def search_and_submit_links
+    html = link_to_function('CONTRIBUTE', nil, :style => "background:none;") do |page| 
+      page.visual_effect(:blind_up, 'search', { :duration => 0.5 })
+      page.visual_effect(:toggle_blind, 'submit', { :duration => 0.5 }) 
+      end 
+    html << link_to_function('SEARCH') do |page| 
+      page.visual_effect(:blind_up, 'submit', { :duration => 0.5 })
+      page.visual_effect(:toggle_blind, 'search', { :duration => 0.5 }) 
+      end 
+  end
+
 end
