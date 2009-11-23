@@ -16,5 +16,13 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 
-# for OSX:
+# for OSX, ImageMagick install with ports
 Paperclip.options[:command_path] = "/opt/local/bin"
+
+# debuging with passenger
+if File.exists?(File.join(RAILS_ROOT,'tmp', 'debug.txt'))
+  require 'ruby-debug'
+  Debugger.wait_connection = true
+  Debugger.start_remote
+  File.delete(File.join(RAILS_ROOT,'tmp', 'debug.txt'))
+end
