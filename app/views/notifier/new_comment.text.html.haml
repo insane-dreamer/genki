@@ -14,6 +14,7 @@
     %br
     %p Comment from: #{@comment.author}.
     %p Country: #{@comment.country.blank? ? 'Unspecified' : @comment.country}
+    %p Email: #{@comment.email.blank? ? 'Unspecified' : @comment.email}
     %p Posted on #{@comment.created_at.strftime("%d %B")}
     %br 
     = @comment.body

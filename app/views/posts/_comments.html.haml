@@ -8,23 +8,4 @@
 
 .author.large_link(style="margin:0;")= link_to_function 'HAVE A SAY', "Effect.toggle('new_comment','blind', {duration: 0.5})"
 
-#new_comment(style="display:none;")
-  - unless @comment.errors.empty?
-    .errors
-      %h3 Comment not added!
-      %ul
-        - @comment.errors.sort_by(&:first).each do |error|
-          %li= format_comment_error(error)
-  
-  - form_for([@post, @comment]) do |form|
-    %p 
-      = form.text_field 'author'
-      %small.author Name or #{link_to "OpenID", "http://openidexplained.com/"} (required)
-    %p 
-      = form.text_field 'country'
-      %small.author Country (optional)
-    %p 
-      = form.text_area 'body'
-      %br
-      %small.author #{link_to "Markdown enabled", "http://daringfireball.net/projects/markdown/syntax"}
-    = image_submit_tag 'comment.gif'
+= render :partial => "new_comment"
