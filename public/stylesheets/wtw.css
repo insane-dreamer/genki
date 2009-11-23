@@ -240,7 +240,7 @@ margin: 0 auto;
 width: 848px;
 height: 81px;
 background: url(/images/header.jpg) bottom left no-repeat;
-padding: 84px 0 0 0;
+padding: 64px 0 0 0;
 }
 
 #content {
@@ -251,7 +251,7 @@ padding: 0 20px 0 20px;
 
 #feature {
 width: 808px;
-height: 301px;
+height: 351px;
 background: url(/images/feature_bg.jpg) top left no-repeat;
 }
 
@@ -304,13 +304,13 @@ background: url(/images/feature_bottom.jpg) top left no-repeat;
 
 #frontpage_posts_wrapper {
 width: 608px;
-height: 300px;
+height: 350px;
 overflow: hidden;
 }
 
 div.scroller { 
 	width: 608px; 
-	height: 300px;
+	height: 350px;
 	overflow: hidden;
 	}
 	div.scroller div#scrollcontent {
@@ -318,7 +318,7 @@ div.scroller {
 		}
 	div.scroller div.section {
 		width:608px;
-		height:300px;
+		height:350px;
 		overflow:hidden;
 		float:left;
 		padding:1em;		
@@ -327,7 +327,6 @@ div.scroller {
 #singlePostSummary, #tweets, #twoPostSummary {
   float: left;
   width: 516px;
-  height: 214px;
   padding: 20px 0 0 44px;
   font-family: Calibri, Arial, sans-serif;
   font-size: 14px;
