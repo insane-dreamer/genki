@@ -17,4 +17,5 @@ clips
 config/initializers/twitter.rb
 public/2009/
 config/initializers/hoptoad.rb
+lib/hurls.rb
 
