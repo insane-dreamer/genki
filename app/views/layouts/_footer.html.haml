@@ -1,8 +1,7 @@
 #footer
   #rss
     = link_to image_tag('rss.gif'), rss_path(:format => 'atom')
-  &copy; 
-  = Time.now.year.to_s 
-  %a(href="http://www.thefamily.org") The Family International
+  &copy; #{Time.now.year.to_s} 
+  = link_to "The Family International", "http://www.thefamily.org"
   %br
   Design by #{link_to "Aeron Creative", "http://aeroncreative.com"}
