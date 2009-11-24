@@ -16,11 +16,20 @@ class Post < ActiveRecord::Base
   validate                :validate_published_at_natural
   attr_accessor           :direction
 
+  named_scope :published, :order => 'published_at DESC', :conditions => ['published_at < ?', Time.now]
+
   define_index do
     indexes body, :as => :post, :sortable => true
     indexes author, :sortable => true
-    has created_at, updated_at
+    has created_at, updated_at, published_at
   end 
+  
+  sphinx_scope(:pubbed) { 
+    {:with => { :published_at => 2.years.ago.to_i..Time.now.to_i } }
+    }
+  sphinx_scope(:latest_first) {
+    {:order => 'published_at DESC' }
+    }
 
   def validate_published_at_natural
     errors.add("published_at_natural", "Unable to parse time") unless published?
@@ -131,13 +140,13 @@ class Post < ActiveRecord::Base
   end
 
   def next(num=1)
-    # finds next within current section only
-    Post.all(:conditions => ["id > ? and section_id = ?", self.id, self.section_id], :limit => num, :order => "id")
+    # finds next published within current section only
+    Post.published.all(:conditions => ["id > ? and section_id = ?", self.id, self.section_id], :limit => num, :order => "id")
   end
   
   def previous(num=1)
-    # finds previous within current section only
-    Post.all(:conditions => ["id < ? and section_id = ?", self.id, self.section_id], :limit => num, :order => "id DESC")
+    # finds previous published within current section only
+    Post.published.all(:conditions => ["id < ? and section_id = ?", self.id, self.section_id], :limit => num, :order => "id DESC")
   end
 
   # TODO: Contribute this back to acts_as_taggable_on_steroids plugin
@@ -146,3 +155,4 @@ class Post < ActiveRecord::Base
     super(value)
   end
 end
+
