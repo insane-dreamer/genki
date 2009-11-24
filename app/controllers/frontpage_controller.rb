@@ -4,14 +4,14 @@ class FrontpageController < ApplicationController
     @tag = params[:tag]
     @section = params[:section] ? Section.find(params[:section].to_i) : Section.first
     if params[:direction]
-      lastpost = Post.find(params[:post])
+      lastpost = Post.published.find(params[:post])
       @posts = params[:direction] == "previous" ? lastpost.previous(@section.per_page) : lastpost.next(@section.per_page)
     else
-      @posts = Post.latest(@section,@section.per_page)
+      @posts = Post.published.latest(@section,@section.per_page)
     end
     # reverse posts so that latest one is on the right (placed last in the html)
     @posts.reverse!
-    @rssposts = Post.find_recent(:tag => @tag, :include => :tags)
+    @rssposts = Post.published.find_recent(:tag => @tag, :include => :tags)
     
     raise(ActiveRecord::RecordNotFound) if @tag && @posts.empty?
     
@@ -44,7 +44,7 @@ class FrontpageController < ApplicationController
   
   def search
     @query = params[:query]
-    @results = Post.search @query, :page => params[:page], :per_page => 15
+    @results = Post.pubbed.latest_first.search @query, :page => params[:page], :per_page => 15
   end
   
 	def submit
