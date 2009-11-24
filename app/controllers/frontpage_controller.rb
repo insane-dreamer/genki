@@ -7,7 +7,7 @@ class FrontpageController < ApplicationController
       lastpost = Post.published.find(params[:post])
       @posts = params[:direction] == "previous" ? lastpost.previous(@section.per_page) : lastpost.next(@section.per_page)
     else
-      @posts = Post.published.latest(@section,@section.per_page)
+      @posts = Post.latest(@section,@section.per_page)
     end
     # reverse posts so that latest one is on the right (placed last in the html)
     @posts.reverse!

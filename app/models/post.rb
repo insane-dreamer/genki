@@ -47,6 +47,10 @@ class Post < ActiveRecord::Base
   def published?
     published_at?
   end
+  
+  def publishable?
+    true if self.published_at < Time.now
+  end
 
   attr_accessor :published_at_natural
   def published_at_natural
@@ -56,7 +60,7 @@ class Post < ActiveRecord::Base
   class << self
 
     def latest(section,num=1)
-      Post.all(:conditions => ["section_id = ?", section], :limit => num, :order => "created_at DESC")
+      Post.published.all(:conditions => ["section_id = ?", section], :limit => num)
     end
 
     def build_for_preview(params)
