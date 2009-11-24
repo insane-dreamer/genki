@@ -13,12 +13,13 @@
 <br/>
 
 <p>To display the thumbnail and link to the full photo:</p>
+<p><em>Replace the "put caption here" with photo caption.</em></p>
 
 &lt;a href=&quot;<%= @photo.file.url %>&quot; rel=&quot;lightbox&quot; title=&quot;put caption here&quot; &gt; &lt;img src=&quot;<%= @photo.file.url(:thumb) %>&quot; />&lt;/a&gt;
 
 <br/>
 
-<p>To float the picture to the right:</p>
+<p>To float the thumbnail to the right and link to the full photo:</p>
 
 &lt;a href=&quot;<%= @photo.file.url %>&quot; rel=&quot;lightbox&quot; title=&quot;put caption here&quot; style=&quot;float:right;&quot; &gt;&lt;img src=&quot;<%= @photo.file.url(:thumb) %>&quot; />&lt;/a&gt;
 
