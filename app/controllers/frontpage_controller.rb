@@ -26,7 +26,7 @@ class FrontpageController < ApplicationController
   def tweet  
     # only called with ajax, returns tweets.js.rjs
     tweets = Tweet.alltweets
-    tweets.per_page = 6
+    tweets.per_page = 7
     if params[:direction] == 'previous'
       @page = params[:page].to_i + 1
       @page = tweets.pages.count if @page > tweets.pages.count
