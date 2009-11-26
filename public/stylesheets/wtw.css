@@ -29,6 +29,7 @@ margin: 0;
 color: #fff;
 font-family: Cambria, "Times New Roman", serif;
 font-size: 22px;
+font-weight: 100;
 }
 
 .post_title {
@@ -50,7 +51,7 @@ font-size: 18px;
 font-weight: bold;
 font-family: sans-serif;
 color: #fff;
-margin: 3px 0 7px 2px;
+margin: 10px 0 7px 2px;
 border-top: 1px dotted black;
 padding-top: 5px;
 }
