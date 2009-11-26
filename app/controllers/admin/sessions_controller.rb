@@ -36,6 +36,7 @@ class Admin::SessionsController < ApplicationController
 protected
 
   def successful_login
+    reset_session
     session[:logged_in] = true
     redirect_to(admin_dashboard_path)
   end
