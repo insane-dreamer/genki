@@ -11,7 +11,6 @@ class FrontpageController < ApplicationController
     end
     # reverse posts so that latest one is on the right (placed last in the html)
     @posts.reverse!
-    @rssposts = Post.published.find_recent(:tag => @tag, :include => :tags)
     
     raise(ActiveRecord::RecordNotFound) if @tag && @posts.empty?
     

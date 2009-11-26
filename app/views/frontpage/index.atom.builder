@@ -1,3 +1,5 @@
+@rssposts = Post.published.find_recent(:tag => @tag, :include => :tags)
+
 atom_feed(
   :url         => rss_path(:format => 'atom', :only_path => false), 
   :root_url    => root_path
