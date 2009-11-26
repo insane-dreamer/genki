@@ -1,4 +1,4 @@
-%h2= h(post.title)
+.post_title= h(post.title)
 .author
   #{h(post.author)}, #{format_post_date(post.published_at)} #{number_comments(post)}
 .postbody= post.body_html.untaint
