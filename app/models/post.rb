@@ -145,12 +145,13 @@ class Post < ActiveRecord::Base
 
   def next(num=1)
     # finds next published within current section only
-    Post.published.all(:conditions => ["id > ? and section_id = ?", self.id, self.section_id], :limit => num, :order => "id")
+    # requires sorting oldest to newest and then reversing the result 
+    Post.published.all(:conditions => ["published_at > ? and section_id = ?", self.published_at, self.section_id], :limit => num, :order => 'published_at').reverse
   end
   
   def previous(num=1)
     # finds previous published within current section only
-    Post.published.all(:conditions => ["id < ? and section_id = ?", self.id, self.section_id], :limit => num, :order => "id DESC")
+    Post.published.all(:conditions => ["published_at < ? and section_id = ?", self.published_at, self.section_id], :limit => num)
   end
 
   # TODO: Contribute this back to acts_as_taggable_on_steroids plugin
