@@ -1,8 +1,8 @@
 - content_for(:page_title) do 
-  =h archives_title
+  &= archives_title
 
 #sectionPage
-  %h2 #{@section.name.upcase} Archives
+  %h2 #{h(@section.name.upcase)} Archives
   %br
   - if @months.empty?
     %p Once posts are added they will start to appear in this archive.
@@ -12,7 +12,7 @@
       %ul.archive-month
         - month.posts.each do |post| 
           %li
-            = link_to(post.title, post_path(post))
+            = link_to(h(post.title), post_path(post))
             = unless post.tags.empty?
               %span.tags (#{linked_tag_list(post.tags)})
 

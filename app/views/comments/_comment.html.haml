@@ -2,6 +2,6 @@
 = author_link(comment)
 &nbsp;
 %small.author 
-  = comment.country + ',' if comment.country
+  &= comment.country + ',' if comment.country
   = format_comment_date(comment.created_at)
 .comment= comment.body_html.untaint

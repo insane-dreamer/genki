@@ -6,7 +6,7 @@
     %h2 New "Win the World" article by you
     %p Hi! This is to let you know that a testimony or news article by you, or someone linked to this email address, has been posted on the #{link_to "Win the World", "http://wtw.familymembers.com"} site. 
     %br
-    %p Article titled: #{@post.title}.
+    %p Article titled: #{h(@post.title)}.
     %br
     = link_to("Click here", @url) + " to see the article."
     %br

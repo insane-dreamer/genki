@@ -1,7 +1,7 @@
 - if @has_previous
   #leftArrow
-    = link_to_remote image_tag('arrow_left.jpg', :class => 'arrow'), :url => tweet_path(:page => @page, :direction => 'previous'), :html => {:class => 'ico-prev'}
+    = link_to_remote image_tag('arrow_left.jpg', :class => 'arrow'), :url => tweet_path(:page => h(@page), :direction => 'previous'), :html => {:class => 'ico-prev'}
 
 - if @has_next
   #rightArrow
-    = link_to_remote image_tag('arrow_right.jpg', :class => 'arrow'), :url => tweet_path(:page => @page, :direction => 'next'), :html => {:class => 'ico-next'}
+    = link_to_remote image_tag('arrow_right.jpg', :class => 'arrow'), :url => tweet_path(:page => h(@page), :direction => 'next'), :html => {:class => 'ico-next'}

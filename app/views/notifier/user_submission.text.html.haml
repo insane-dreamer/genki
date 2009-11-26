@@ -3,10 +3,10 @@
   %head
     %meta(content="text/html; charset=UTF-8" http-equiv="Content-Type")
   %body
-    %h2 Submission from: #{@name}
+    %h2 Submission from: #{h(@name)}
     %p
-      %b Email: #{@email}
+      %b Email: #{h(@email)}
     %br
     %p Submission:
     %br
-    = @content
+    = h(@content)
