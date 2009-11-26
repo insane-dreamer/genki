@@ -13,6 +13,7 @@ caches_page :show
     respond_to do |wants|
       wants.html 
     	wants.js
+    	wants.atom { render :nothing => true }
     end
   end
 
