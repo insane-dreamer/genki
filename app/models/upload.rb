@@ -5,6 +5,7 @@ class Upload < ActiveRecord::Base
   before_file_post_process :check_for_image
 
   named_scope :images, :conditions => [ 'file_content_type LIKE ?', '%image%' ], :order => 'created_at DESC'
+  named_scope :recent, :limit => 25, :order => 'created_at DESC'
 
   def is_image?
     self.file.content_type.include?('image')

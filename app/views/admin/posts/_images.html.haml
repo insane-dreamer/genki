@@ -1,0 +1,12 @@
+#image_thumbs
+
+  %h2 
+    Available images 
+    %small (latest first)
+  %p (Click on an image to see the links to embed it into a post. Mouse over to see filename.)
+
+  #photolinks{:style => "display:none;" }&nbsp;
+
+  - Upload.recent.each do |img|
+    - link = img.is_image? ? img.file.url : 'file.png'
+    = link_to_remote image_tag(link, :class => 'image_thumb', :title => img.file_file_name), :url => photolink_path(img)
