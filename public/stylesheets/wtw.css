@@ -389,6 +389,10 @@ margin: 0 0 0 327px;
 	margin: 0 0 0 332px;
 }
 
+.centered_button {
+	margin-left: 372px !important;
+}
+
 #archivesButton {
   width: 35px;
 	float: left;

@@ -55,4 +55,12 @@ module ApplicationHelper
       end 
   end
 
+  def middle_home_button(section=Section.first,centered=true)
+    if centered 
+      content_tag(:div, link_to(image_tag('home.gif'), frontpage_path(:section => section)), :id => 'homeButton', :class => 'centered_button')
+    else    
+      content_tag(:div, link_to(image_tag('home.gif'), frontpage_path(:section => section)), :id => 'homeButton')
+    end
+  end
+
 end
