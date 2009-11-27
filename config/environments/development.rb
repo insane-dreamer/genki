@@ -33,3 +33,6 @@ config.gem "rails-footnotes", :source => "http://gemcutter.org"
 # for showing development errors
 require 'pp'
 
+#query_trace
+config.gem "query_trace", :source => 'http://gemcutter.org'
+QUERY_TRACE=true

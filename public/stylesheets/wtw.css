@@ -498,3 +498,10 @@ div.comment div.comment {
 	text-align: right !important;
 }
 
+/* -- Debugging  */
+
+#footnotes_debug {
+	font: 10pt sans-serif;
+	color: black;
+}
+
