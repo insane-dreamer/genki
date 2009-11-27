@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
 
-  # uses white_list and sanitize_params plugins to remove unsafe html tags from params
-  before_filter :sanitize_params
   after_filter :set_content_type
 
   # See ActionController::RequestForgeryProtection for details

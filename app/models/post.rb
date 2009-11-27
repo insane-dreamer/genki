@@ -2,8 +2,9 @@ class Post < ActiveRecord::Base
   DEFAULT_LIMIT = 15
 
   acts_as_taggable
-  # allow sanitized html tags in body and summary
-  xss_terminate :sanitize => [:summary, :body]
+  # allow html in body and summary
+  xss_terminate :except => [:summary, :body]
+  auto_sanitize :allow_tags => [:summary, :body]
   
   has_many                :comments, :dependent => :destroy
   has_many                :approved_comments, :class_name => 'Comment'
