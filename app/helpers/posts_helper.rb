@@ -7,7 +7,8 @@ module PostsHelper
 
   def single_post_navigation(post)
     nav = previous_post_button(post)
-    nav << middle_post_button(post)
+    nav << middle_home_button(post.section_id,false)
+    nav << middle_archives_button(post.section_id,false)
     nav << next_post_button(post)
   end
 
@@ -19,12 +20,6 @@ module PostsHelper
   def next_post_button(post)
     arrow = !post.next.empty? ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow'), :url => {:action => 'show', :id => post.id, :direction => 'next'}, :html => {:class => 'ico-next'}) : "&nbsp;"    
     content_tag :div, arrow, :id => 'rightArrow'
-  end
-
-  def middle_post_button(post)
-    nav = content_tag(:div, link_to(image_tag('home.gif'), frontpage_path(:section => post.section)), :id => 'homeButton')
-    nav << content_tag(:div, link_to(image_tag('archives_small.gif'), section_path(post.section)), :id => 'archivesButton')
-    return nav
   end
 
 end

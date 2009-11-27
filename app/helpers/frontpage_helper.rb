@@ -3,7 +3,7 @@ module FrontpageHelper
   def frontpage_navigation
     nav = ""
     nav << previous_page_button unless @posts.empty?
-    nav << middle_page_button
+    nav << middle_archives_button(@section)
     nav << next_page_button unless @posts.empty?
   end
 
@@ -26,10 +26,6 @@ module FrontpageHelper
     content_tag :div, arrow, :id => 'rightArrow'
   end
   
-  def middle_page_button
-    content_tag(:div, link_to(image_tag('archives.gif'), section_path(@section)), :id => 'middleNavButton')
-  end
-
   def section_div_id
     @section.per_page == 1 ? 'singlePostSummary' : 'twoPostSummary'
   end

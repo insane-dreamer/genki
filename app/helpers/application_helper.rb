@@ -63,4 +63,13 @@ module ApplicationHelper
     end
   end
 
+  def middle_archives_button(section=Section.first,centered=true)
+    if centered 
+      content_tag(:div, link_to(image_tag('archives.gif'), section_path(section)), :id => 'middleNavButton')
+    else    
+      content_tag(:div, link_to(image_tag('archives_small.gif'), section_path(section)), :id => 'archivesButton')
+    end
+  end
+
+
 end
