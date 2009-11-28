@@ -10,6 +10,8 @@ caches_page :show
       @post = Post.published.find_by_permalink(*([:year, :month, :day, :slug].collect {|x| params[x] } << {:include => [:approved_comments, :tags]}))
     end
     @comment = Comment.new
+    @previous = @post.previous.empty? ? nil : @post.previous.first
+    @next = @post.next.empty? ? nil : @post.next.first
     respond_to do |wants|
       wants.html 
     	wants.js
