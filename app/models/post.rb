@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   acts_as_taggable
   # allow html in body and summary
   xss_terminate :except => [:summary, :body]
-  auto_sanitize :allow_tags => [:summary, :body]
+  auto_sanitize :except => [:summary, :body]
   
   has_many                :comments, :dependent => :destroy
   has_many                :approved_comments, :class_name => 'Comment'
