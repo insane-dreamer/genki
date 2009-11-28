@@ -442,7 +442,7 @@ float: left;
 	padding: 1px;
 }
 
-.postbody img:hover, #new_comment input:hover, #comments img:hover {
+.postbody a img:hover, #new_comment input:hover, #comments img:hover {
   filter:alpha(opacity=65);   
   opacity: 0.65;
 }
