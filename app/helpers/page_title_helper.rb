@@ -15,7 +15,7 @@ module PageTitleHelper
     compose_title(h(page.title))
   end
 
-  def frontpage_title(section)
+  def frontpage_section_title(section)
     compose_title(h(section.name.upcase))
   end
 
