@@ -4,20 +4,24 @@ module PageTitleHelper
   end
 
   def post_title(post)
-    compose_title(post.title)
+    compose_title(h(post.title))
   end
 
-  def archives_title
-    compose_title("Archives")
+  def archives_title(section)
+    compose_title(h(section.name.upcase) + " Archives")
   end
 
   def page_title(page)
-    compose_title(page.title)
+    compose_title(h(page.title))
+  end
+
+  def frontpage_title(section)
+    compose_title(h(section.name.upcase))
   end
 
   private
 
   def compose_title(*parts)
-    (parts << config[:title]).reject(&:blank?).join(" - ") 
+    (parts.unshift(config[:title])).reject(&:blank?).join(" - ") 
   end
 end

@@ -1,5 +1,5 @@
 - content_for(:page_title) do 
-  &= archives_title
+  = archives_title(@section)
 
 #sectionPage
   %h2 #{h(@section.name.upcase)} Archives
