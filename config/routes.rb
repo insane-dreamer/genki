@@ -18,27 +18,19 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/admin', :controller => 'admin/dashboard', :action => 'show'
   map.connect '/admin/api', :controller => 'admin/api', :action => 'index'
-  map.archives '/archives', :controller => 'archives', :action => 'index'
-
-  map.connect 'post/:id/:direction', :controller => 'posts', :action => 'show'
 
   map.resources :posts
-  map.resources :sections
-
-  map.root :controller => 'frontpage', :action => 'index'
-  
-  map.frontpage '/home/section/:section', :controller => 'frontpage', :action => 'index'
-  map.change_page '/home/section/:section/post/:post/:direction', :controller => 'frontpage', :action => 'index'
-  map.switch_tab '/home/tab/:section', :controller => 'frontpage', :action => 'switch_tab'
-  map.search '/search', :controller => 'frontpage', :action => 'search' 
-  map.submit '/submit', :controller => 'frontpage', :action => 'submit'
-  map.tweet '/tweet/:page/:direction', :controller => 'frontpage', :action => 'tweet', :direction => 'none', :page => 1
-  map.about '/about', :controller => 'pages', :action => 'show', :id => 'about'
-  
+  map.resources :sections, :path_prefix => 'archives', :only => [:show]
   map.resources :sitemap
-  map.resources :frontpage
   map.resources :pages 
 
+  # frontpage routes
+  map.frontpage '/section/:section', :controller => 'frontpage', :action => 'index'
+  map.search '/search', :controller => 'frontpage', :action => 'search' 
+  map.submit '/submit', :controller => 'frontpage', :action => 'submit'
+  map.tweet '/tweet/:page/:direction', :controller => 'frontpage', :action => 'tweet', :defaults => { :direction => 'none', :page => 1 }
+  map.about '/about', :controller => 'pages', :action => 'show', :id => 'about'
+  
   map.post_full_path ':year/:month/:day/:slug', :controller => 'posts', :action => 'show', :requirements => { :year => /\d+/ }
   map.connect ':year/:month/:day/:slug/comments', :controller => 'comments', :action => 'index'
   map.connect ':year/:month/:day/:slug/comments/new', :controller => 'comments', :action => 'new'
@@ -48,4 +40,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.rss 'feed.:format', :controller => 'frontpage', :action => 'index'
 
+  map.root :frontpage 
+  
 end
