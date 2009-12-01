@@ -157,6 +157,10 @@ class Post < ActiveRecord::Base
     Post.published.all(:conditions => ["published_at < ? and section_id = ?", self.published_at, self.section_id], :limit => num)
   end
 
+  def get_next(direction='next',num=1)
+    direction == 'next' ? self.next(num) : self.previous(num)
+  end
+
   # TODO: Contribute this back to acts_as_taggable_on_steroids plugin
   def tag_list=(value)
     value = value.join(", ") if value.respond_to?(:join)

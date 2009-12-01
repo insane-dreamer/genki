@@ -1,18 +1,24 @@
 class FrontpageController < ApplicationController
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :bad_request
+
   def index
-    @tag = params[:tag]
-    @section = params[:section] ? Section.find(params[:section].to_i) : Section.first
-    if params[:direction]
-      lastpost = Post.published.find(params[:post])
-      @posts = params[:direction] == "previous" ? lastpost.previous(@section.per_page) : lastpost.next(@section.per_page)
+#    @tag = params[:tag]
+    @section = if params[:section]
+      # section could be name or id
+      Section.find_by_name(params[:section].downcase) || Section.find(params[:section].to_i) 
     else
-      @posts = Post.latest(@section,@section.per_page)
+      Section.first
+    end
+    @posts = if params[:direction]
+      Post.find(params[:post]).get_next(params[:direction],@section.per_page)
+    else
+      Post.latest(@section,@section.per_page)
     end
     # reverse posts so that latest one is on the right (placed last in the html)
     @posts.reverse!
     
-    raise(ActiveRecord::RecordNotFound) if @tag && @posts.empty?
+#    raise(ActiveRecord::RecordNotFound) if @tag && @posts.empty?
     
     respond_to do |format|
       format.html
@@ -22,8 +28,8 @@ class FrontpageController < ApplicationController
 
   end
   
-  def tweet  
-    # only called with ajax, returns tweets.js.rjs
+  def tweet
+    # usually called with ajax
     tweets = Tweet.alltweets
     tweets.per_page = 7
     if params[:direction] == 'previous'
@@ -38,7 +44,13 @@ class FrontpageController < ApplicationController
     @tweets = tweets.pages.find(@page).tweets
     # previous == next because tweets are ordered in reverse
     @has_previous = true if tweets.pages.find(@page).next
-    @has_next = true if tweets.pages.find(@page).previous
+    @has_next = true if tweets.pages.find(@page).previous  
+    respond_to do |format|
+      format.js
+      # this is in case anyone goes to /tweet manually
+    	format.html
+    end
+            
   end
   
   def search
@@ -58,7 +70,7 @@ class FrontpageController < ApplicationController
     end
   end
   
-  private
+  protected
 
   def verify_submission(sub)
     email = Regexp.new(%r{^(?:[_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-zA-Z0-9\-\.]+)*(\.[a-z]{2,4})$}i)
@@ -69,6 +81,11 @@ class FrontpageController < ApplicationController
         @error = "Invalid email address. Please check and resubmit."
     end
     return @error
+  end
+
+  def bad_request
+    flash[:notice] = "That page does not exist!"
+    redirect_to root_path
   end
 
 end

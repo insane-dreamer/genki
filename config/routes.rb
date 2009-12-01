@@ -30,16 +30,22 @@ ActionController::Routing::Routes.draw do |map|
   map.submit '/submit', :controller => 'frontpage', :action => 'submit'
   map.tweet '/tweet/:page/:direction', :controller => 'frontpage', :action => 'tweet', :defaults => { :direction => 'none', :page => 1 }
   map.about '/about', :controller => 'pages', :action => 'show', :id => 'about'
+
+  map.connect '/tweet', :controller => 'frontpage', :action => 'tweet'
+
+  map.rss '/feed.:format', :controller => 'frontpage', :action => 'index'
+
+  map.connect ':section', :controller => 'frontpage', :action => 'index'
+
+  map.root :frontpage 
   
   map.post_full_path ':year/:month/:day/:slug', :controller => 'posts', :action => 'show', :requirements => { :year => /\d+/ }
   map.connect ':year/:month/:day/:slug/comments', :controller => 'comments', :action => 'index'
   map.connect ':year/:month/:day/:slug/comments/new', :controller => 'comments', :action => 'new'
   map.connect ':year/:month/:day/:slug/comments.:format', :controller => 'comments', :action => 'index'
   map.connect ':year/:month/:day/:slug', :controller => 'posts', :action => 'show', :requirements => { :year => /\d+/ }
-  map.posts_with_tag ':tag', :controller => 'posts', :action => 'index'
+  # no support for tags at present
+  # map.posts_with_tag '/archives/:tag', :controller => 'sections', :action => 'index'
 
-  map.rss 'feed.:format', :controller => 'frontpage', :action => 'index'
 
-  map.root :frontpage 
-  
 end
