@@ -1,17 +1,5 @@
-= content_for(:page_title) do 
-  = config[:title]
-= content_for(:head) do 
-  = auto_discovery_link_tag(:atom, rss_path(:tag => @tag, :format => 'atom'))
-
-#feature
-  #featureLeft
-    = frontpage_tabs('TWEET')
-  #featureRight
-    #frontpage_posts_wrapper
-      #frontpage_posts
-        .scroller
-          #scrollcontent
-            = render :partial => "tweets"
-
-#arrows
+= content_for(:frontpage_content) do
+  = render :partial => "tweets"
+  
+= content_for(:navigation) do 
   = render :partial => "tweet_nav"

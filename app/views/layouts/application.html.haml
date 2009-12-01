@@ -19,5 +19,5 @@
       #wrapper    
         = link_to content_tag(:div, nil, :id => "header"), root_path
         #content      
-          = yield                
+          = yield(:content) || yield               
         = render :partial => "layouts/footer"
