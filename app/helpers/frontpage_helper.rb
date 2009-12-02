@@ -17,12 +17,12 @@ module FrontpageHelper
   end
 
   def previous_page_button
-    arrow = !@posts.first.previous.empty? ? link_to_remote(image_tag('arrow_left.jpg', :class => 'arrow'), :url => change_page_path(:post => @posts.first, :section => @section, :direction => 'previous'), :html => {:class => 'ico-prev'}) : "&nbsp;"
+    arrow = !@posts.first.previous.empty? ? link_to_remote(image_tag('arrow_left.jpg', :class => 'arrow', :alt => 'Previous page'), :url => change_page_path(:post => @posts.first, :section => @section, :direction => 'previous'), :html => {:class => 'ico-prev'}) : "&nbsp;"
     content_tag :div, arrow, :id => 'leftArrow'
   end
 
   def next_page_button
-    arrow = !@posts.last.next.empty? ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow'), :url => change_page_path(:post => @posts.last, :section => @section, :direction => 'next'), :html => {:class => 'ico-next'}) : "&nbsp;"
+    arrow = !@posts.last.next.empty? ? link_to_remote(image_tag('arrow_right.jpg', :class => 'arrow', :alt => 'Next page'), :url => change_page_path(:post => @posts.last, :section => @section, :direction => 'next'), :html => {:class => 'ico-next'}) : "&nbsp;"
     content_tag :div, arrow, :id => 'rightArrow'
   end
   
