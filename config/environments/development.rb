@@ -34,5 +34,5 @@ config.gem "rails-footnotes", :source => "http://gemcutter.org"
 require 'pp'
 
 #query_trace
-config.gem "query_trace", :source => 'http://gemcutter.org'
-QUERY_TRACE=true
+#config.gem "query_trace", :source => 'http://gemcutter.org'
+#QUERY_TRACE=true
