@@ -13,12 +13,12 @@ module PostsHelper
   end
 
   def previous_post_button
-    arrow = @previous ? link_to(image_tag('arrow_left.jpg', :class => 'arrow'), post_path(@previous), :html => {:class => 'ico-prev'}) : "&nbsp;"
+    arrow = @previous ? link_to(image_tag('arrow_left.jpg', :class => 'arrow', :alt => 'Previous page'), post_path(@previous), :html => {:class => 'ico-prev'}) : "&nbsp;"
     content_tag :div, arrow, :id => 'leftArrow'
   end
 
   def next_post_button
-    arrow = @next ? link_to(image_tag('arrow_right.jpg', :class => 'arrow'), post_path(@next), :html => {:class => 'ico-next'}) : "&nbsp;"    
+    arrow = @next ? link_to(image_tag('arrow_right.jpg', :class => 'arrow', :alt => 'Next page'), post_path(@next), :html => {:class => 'ico-next'}) : "&nbsp;"    
     content_tag :div, arrow, :id => 'rightArrow'
   end
 
