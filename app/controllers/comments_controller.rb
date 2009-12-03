@@ -29,6 +29,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new((session[:pending_comment] || params[:comment] || {}).reject {|key, value| !Comment.protected_attribute?(key) })
     logger.info @comment.inspect
     @comment.post = @post
+    expire_page :controller => :posts, :action => :show
 
     session[:pending_comment] = nil
 
