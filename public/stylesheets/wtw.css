@@ -182,23 +182,34 @@ position: relative;
 margin: 0px auto;
 }
 
+  #submit input {
+	width: 140px;
+  }
+  #submit input.short {
+	width: 100px;
+  }
+  #submit textarea#content {
+	padding: 0;
+	margin: 0;
+  width: 465px;
+  }
+
+
 #submit_left {
   float: left;
-	width: 200px;
+	width: 150px;
 	margin-left: 5px;
 	padding: 5px 0 0 0;
-}
+  }
+  #submit_left.short {
+	width: 110px;
+  }
 
 #submit_right {
-  float: right;
-	width: 510px;
-	padding-right: 35px;
+  float: left;
+	width: 465px;
+	padding-left: 10px;
 	padding-top: 5px;
-}
-
-textarea#content {
-	padding: 0;
-  width: 530px;
 }
 
 #search {
