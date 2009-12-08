@@ -1,5 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   before_filter :find_post, :only => [:show, :update, :destroy]
+  before_filter :clear_cache, :only => [:create, :update, :destroy]
 
   def index
     respond_to do |format|
@@ -30,7 +31,6 @@ class Admin::PostsController < Admin::BaseController
   end
   
   def update
-    expire_page :controller => :posts, :action => :show
     if @post.update_attributes(params[:post])
       respond_to do |format|
         format.html {
@@ -98,4 +98,9 @@ class Admin::PostsController < Admin::BaseController
   def find_post
     @post = Post.find(params[:id])
   end
+  
+  def clear_cache
+    expire_page :controller => :posts, :action => :show
+  end
+  
 end

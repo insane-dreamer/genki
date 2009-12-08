@@ -75,8 +75,8 @@ class FrontpageController < ApplicationController
   def verify_submission(sub)
     email = Regexp.new(%r{^(?:[_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-zA-Z0-9\-\.]+)*(\.[a-z]{2,4})$}i)
     case 
-      when sub[:name].blank? || sub[:email].blank?
-        @error = "Please include your name and email. Thanks!"
+      when sub[:name].blank? || sub[:email].blank? || sub[:homenum].blank? || sub[:country].blank?
+        @error = "Please include your name, email, home # & country (email & home # for our info only)."
       when email.match(sub[:email].strip).nil?
         @error = "Invalid email address. Please check and resubmit."
     end

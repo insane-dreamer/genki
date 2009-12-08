@@ -2,13 +2,20 @@
   %h3 Contribute content to the Win the World site!
   - form_remote_tag :url => '/submit' do  
     #submit_left
-      %span.label Your Name
+      %span.label Name 
       %br
       = text_field_tag 'name'
       %br
-      %span.label Your Email Address
+      %span.label Email Address
       %br
       = text_field_tag 'email'
+    #submit_left.short
+      %span.label Home No.
+      %br
+      = text_field_tag 'homenum', nil, :class => 'short'
+      %span.label Country
+      %br
+      = text_field_tag 'country', nil, :class => 'short'
     = image_submit_tag 'send.gif', :id => 'submit_submit_button'    
     #submit_right
       %span.label Content 
