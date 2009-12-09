@@ -1,0 +1,8 @@
+= render :partial => "images"
+
+%h1 New post
+
+- semantic_form_for([:admin, @post]) do |form|
+  = render :partial => 'form', :locals => {:form => form}
+  - form.button_field_set do                                     
+    = form.commit_button("Save")
