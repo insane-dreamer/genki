@@ -1,7 +1,7 @@
 class Admin::PostsController < Admin::BaseController
   before_filter :find_post, :only => [:show, :update, :destroy, :publish]
-  before_filter :clear_cache, :only => [:create, :update, :destroy]
-
+  after_filter :expire_cache, :only => [:update, :destroy]
+  
   def index
     respond_to do |format|
       format.html {
@@ -104,7 +104,7 @@ class Admin::PostsController < Admin::BaseController
     else
       flash[:error] = "Error occurred trying to publish/unpublish post."
     end
-    redirect_to :action => index  
+    redirect_to :action => :index  
   end
 
 
@@ -113,9 +113,11 @@ class Admin::PostsController < Admin::BaseController
   def find_post
     @post = Post.find(params[:id])
   end
-  
-  def clear_cache
-    expire_page :controller => :posts, :action => :show
+    
+  def expire_cache
+    # manual hack because expire_page is not working for some wierd reason
+    file = (RAILS_ROOT + '/public/' + [@post.published_at.strftime("%Y"), @post.published_at.strftime("%m"), @post.published_at.strftime("%d"), @post.slug].join('/') + '.html')
+    File.delete(file) if File.exists?(file)
   end
-  
+    
 end
