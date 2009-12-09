@@ -1,0 +1,10 @@
+%tr{:class => cycle('', 'alt')}
+  %td= post.published_at.strftime('%d %b, %Y')
+  %td= link_to post.title?, admin_post_path(post)
+  %td= h(post.excerpt)
+  %td= post.approved_comments.size
+  %td
+    = link_to image_tag((post.published ? 'silk/published.png' : 'silk/unpublished.png'), :alt => 'publish'), publish_admin_post_path(post)
+    = link_to image_tag('silk/pencil.png', :alt => 'edit'), admin_post_path(post)
+    - form_for :post, post, :url => admin_post_path(post), :html => {:class => 'delete-item', :method => :delete} do |form|
+      = image_submit_tag("silk/cross.png")

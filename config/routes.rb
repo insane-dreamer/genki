@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
 
     admin.resource :dashboard, :controller => 'dashboard'
 
-    admin.resources :posts, :new => {:preview => :post}
+    admin.resources :posts, :new => {:preview => :post}, :member => { :publish => :get }
     admin.resources :pages, :new => {:preview => :post}
     admin.resources :uploads
     admin.resources :comments, :member => {:mark_as_spam => :put, :mark_as_ham => :put}
