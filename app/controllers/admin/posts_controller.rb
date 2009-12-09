@@ -52,6 +52,7 @@ class Admin::PostsController < Admin::BaseController
 
   def new
     @post = Post.new
+    render :action => 'show'
   end
   
   def preview
