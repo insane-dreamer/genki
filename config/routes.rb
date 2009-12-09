@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'post/:id/:direction', :controller => 'posts', :action => 'show'
 
-  map.resources :posts
+  map.resources :posts, :only => [ :show ]
   map.resources :sections
 
   map.root :controller => 'frontpage', :action => 'index'
