@@ -9,6 +9,8 @@
     = javascript_include_tag 'builder', 'lightbox', :cache => 'extra'
     = open_id_delegation_link_tags(h(config[:open_id_delegation, :server]), h(config[:open_id_delegation, :delegate])) if config[:open_id_delegation]
     = auto_discovery_link_tag(:atom, rss_path(:format => "atom"), {:title => "Win the World"})
+    %link(rel="shortcut icon" href="/favicon.gif")
+
     = yield(:head)
 
   %body
