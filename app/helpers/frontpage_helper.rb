@@ -8,7 +8,7 @@ module FrontpageHelper
   end
 
   def frontpage_tabs(section)
-    nav = Section.all.map do |s|
+    nav = Section.show_on_front.map do |s|
       link_class = s == section ? 'carousel-jumper carousel-selected' : 'carousel-jumper'
       link_to_remote(s.name.upcase, :url => frontpage_path(:section => s), :html => {:class => link_class})
     end
