@@ -19,7 +19,8 @@ class Post < ActiveRecord::Base
   validate                :validate_published_at_natural
   attr_accessor           :direction
 
-  named_scope :published, :order => 'published_at DESC', :conditions => ['published_at < ?', Time.now]
+  named_scope :published, :order => 'published_at DESC', :conditions => { :published => true }
+  named_scope :unpublished, :order => 'published_at DESC', :conditions => { :published => false }
 
   define_index do
     indexes body, :as => :post, :sortable => true
@@ -161,6 +162,15 @@ class Post < ActiveRecord::Base
     direction == 'next' ? self.next(num) : self.previous(num)
   end
 
+  def excerpt(length=55)
+    spaces = self.body.length >= length ? 0 : length - self.body.length
+    self.body.blank? ? '&nbsp;' : self.body[0..length] + (' ' * spaces) 
+  end
+  
+  def title?(length=30)
+    self.title.blank? ? '[Untitled]' : self.title[0..length]
+  end
+  
   # TODO: Contribute this back to acts_as_taggable_on_steroids plugin
   def tag_list=(value)
     value = value.join(", ") if value.respond_to?(:join)

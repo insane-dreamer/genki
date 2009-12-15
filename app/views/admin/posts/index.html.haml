@@ -1,0 +1,13 @@
+- content_for(:head) do
+  = javascript_include_tag('admin/posts.js')
+
+- unless @unpublished.empty?
+  %h1 Unpublished posts
+  = render :partial => "posts", :locals => { :posts => @unpublished } 
+  
+- unless @published.empty?
+  %h1 Published posts
+  = render :partial => "posts", :locals => { :posts => @published } 
+
+- if @unpublished.empty? && @published.empty? 
+  %h1 No posts yet.

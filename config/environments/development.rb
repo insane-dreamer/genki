@@ -28,7 +28,7 @@ if File.exists?(File.join(RAILS_ROOT,'tmp', 'debug.txt'))
 end
 
 # footnotes
-config.gem "rails-footnotes", :source => "http://gemcutter.org"
+# config.gem "rails-footnotes", :source => "http://gemcutter.org"
 
 # for showing development errors
 require 'pp'
