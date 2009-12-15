@@ -1,0 +1,31 @@
+%p
+  %b Cut and paste the following code and add to the post:
+
+%p To display the thumbnail only:
+
+= "![](#{@photo.file.url(:thumb)})"
+
+%br
+
+%p To float the picture to the right:
+
+= "![](#{@photo.file.url(:thumb)}):right"
+
+%br
+
+%p To display the thumbnail and link to the full photo:
+%p
+  %em Replace the "put caption here" with photo caption.
+
+&lt;a href=&quot;#{@photo.file.url}&quot; rel=&quot;lightbox&quot; title=&quot;put caption here&quot; &gt; &lt;img src=&quot;#{@photo.file.url(:thumb)}&quot; />&lt;/a&gt;
+
+%br
+
+%p To float the thumbnail to the right and link to the full photo:
+
+&lt;a href=&quot;#{@photo.file.url}&quot; rel=&quot;lightbox&quot; title=&quot;put caption here&quot; style=&quot;float:right;&quot; &gt;&lt;img src=&quot;#{@photo.file.url(:thumb)}&quot; />&lt;/a&gt;
+
+%br
+%br
+
+= link_to_function content_tag(:small, "[ CLOSE ]", :style => "float:right;"), "Effect.Fade('photolinks', { duration: 0 } )"

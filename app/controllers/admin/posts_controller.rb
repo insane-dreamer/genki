@@ -1,14 +1,12 @@
 class Admin::PostsController < Admin::BaseController
-  before_filter :find_post, :only => [:show, :update, :destroy]
-  before_filter :clear_cache, :only => [:create, :update, :destroy]
-
+  before_filter :find_post, :only => [:show, :update, :destroy, :publish]
+  after_filter :expire_cache, :only => [:update, :destroy]
+  
   def index
     respond_to do |format|
       format.html {
-        @posts = Post.paginate(
-          :order => "published_at DESC",
-          :page  => params[:page]
-        )
+        @unpublished = Post.unpublished.paginate(:page => params[:page])
+        @published = Post.published.paginate(:page  => params[:page])
       }
     end
   end
@@ -16,7 +14,6 @@ class Admin::PostsController < Admin::BaseController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      Notifier.deliver_new_post(@post) unless @post.author_email.blank?
       respond_to do |format|
         format.html {
           flash[:notice] = "Created post '#{@post.title}'"
@@ -25,7 +22,7 @@ class Admin::PostsController < Admin::BaseController
       end
     else
       respond_to do |format|
-        format.html { render :action => 'new',         :status => :unprocessable_entity }
+        format.html { render :action => 'new', :status => :unprocessable_entity }
       end
     end
   end
@@ -55,6 +52,7 @@ class Admin::PostsController < Admin::BaseController
 
   def new
     @post = Post.new
+    render :action => 'show'
   end
   
   def preview
@@ -93,14 +91,33 @@ class Admin::PostsController < Admin::BaseController
     end
   end
 
+  def publish
+    # publishes or unpublishes
+    if @post.published
+      success = 'un-published' if @post.update_attributes(:published => false)
+    else         
+      success = 'published' if @post.update_attributes(:published => true)
+      Notifier.deliver_new_post(@post) unless @post.author_email.blank?
+    end
+    if success
+      flash[:notice] = "Post #{@post.title} was #{success}."
+    else
+      flash[:error] = "Error occurred trying to publish/unpublish post."
+    end
+    redirect_to :action => :index  
+  end
+
+
   protected
 
   def find_post
     @post = Post.find(params[:id])
   end
-  
-  def clear_cache
-    expire_page :controller => :posts, :action => :show
+    
+  def expire_cache
+    # manual hack because expire_page is not working for some wierd reason
+    file = (RAILS_ROOT + '/public/' + [@post.published_at.strftime("%Y"), @post.published_at.strftime("%m"), @post.published_at.strftime("%d"), @post.slug].join('/') + '.html')
+    File.delete(file) if File.exists?(file)
   end
-  
+    
 end

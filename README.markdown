@@ -67,3 +67,4 @@ License
 GPL - See LICENSE
 
 Admin design heavily inspired by [Habari](http://www.habariproject.org/en/).
+Admin icons by [Mark James](http://www.famfamfam.com/lab/icons/silk/)

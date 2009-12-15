@@ -1,0 +1,17 @@
+%table(cellspacing="0" cellpadding="0")
+  %thead
+    %tr
+      %th Published At
+      %th Title
+      %th Excerpt
+      %th Comments
+      %th Actions
+
+  %tbody
+    = render :partial => 'post', :collection => posts
+
+  %tfoot
+    - if posts.total_pages > 1 
+      %tr.pagination
+        %td(colspan="5")
+          = will_paginate(posts, :previous_label => '« Newer', :next_label => 'Older »')
