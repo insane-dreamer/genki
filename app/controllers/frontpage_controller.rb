@@ -70,6 +70,11 @@ class FrontpageController < ApplicationController
     end
   end
   
+  def bad_request
+    flash[:notice] = "That page does not exist!"
+    redirect_to root_path
+  end
+
   protected
 
   def verify_submission(sub)
@@ -81,11 +86,6 @@ class FrontpageController < ApplicationController
         @error = "Invalid email address. Please check and resubmit."
     end
     return @error
-  end
-
-  def bad_request
-    flash[:notice] = "That page does not exist!"
-    redirect_to root_path
   end
 
 end

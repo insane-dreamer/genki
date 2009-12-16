@@ -47,5 +47,7 @@ ActionController::Routing::Routes.draw do |map|
   # no support for tags at present
   # map.posts_with_tag '/archives/:tag', :controller => 'sections', :action => 'index'
 
+  # catchall
+  map.connect "*path", :controller => "frontpage", :action => "bad_request"
 
 end
