@@ -1,0 +1,5 @@
+- form.input_field_set do
+  = form.input :name, :hint => 'This will appear as the section name on the frontpage tabs.'
+  = form.input :description, :required => false, :hint => 'This will appear on the archive pages.'
+  = form.input :per_page, :hint => 'Number of articles to show on front page (1 or 2)'
+  = form.input :frontpage, :required => false, :label => 'Appear on frontpage?', :as => :boolean, :hint => 'If checked, section will appear as a tab on frontpage.'

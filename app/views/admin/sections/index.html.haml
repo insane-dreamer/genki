@@ -1,0 +1,23 @@
+%h1 Sections (for posts)
+
+%table(cellspacing="0" cellpadding="0")
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Posts/page
+      %th Frontpage?
+      %th Tot Posts
+      %th Actions	
+  %tbody
+    - if @sections.empty?
+      %tr
+        %td(colspan="6") There are no uploads at this time.
+    - else
+      = render :partial => 'section', :collection => @sections
+
+  %tfoot
+    - if @sections.total_pages > 1
+      %tr.pagination
+        %td(colspan="6")
+          = will_paginate(@sections, :previous_label => '« Newer', :next_label => 'Older »') 

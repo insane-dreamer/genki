@@ -1,0 +1,9 @@
+%tr{:class => cycle('', 'alt')}
+  %td= link_to section.name, admin_section_path(section)
+  %td= h(section.description_excerpt)
+  %td= h(section.per_page.to_s)
+  %td= section.frontpage ? "Yes" : "No"
+  %td= section.posts.size.to_s
+  %td
+    = link_to image_tag('silk/pencil.png', :alt => 'edit'), admin_section_path(section)
+    = link_to image_tag('silk/cross.png', :alt => 'delete', :class => 'delete-item'), admin_section_path(section), :confirm => 'Are you sure?', :method => :delete

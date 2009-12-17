@@ -1,0 +1,7 @@
+%h1
+  = params[:action] == 'new' ? 'New Section' : "Editing Section"
+
+- semantic_form_for([:admin, @section]) do |form|
+  = render :partial => 'form', :locals => {:form => form}
+  - form.button_field_set do
+    = form.commit_button("Save")
