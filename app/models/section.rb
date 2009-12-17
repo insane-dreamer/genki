@@ -15,5 +15,8 @@ named_scope :show_on_front, :conditions => ['frontpage = ?', true]
     excerpt + '...' if excerpt.length > 51
   end
   
+  def name_path
+    self.name.parameterize
+  end
 
 end

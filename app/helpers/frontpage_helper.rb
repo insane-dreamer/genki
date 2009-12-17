@@ -3,7 +3,7 @@ module FrontpageHelper
   def frontpage_navigation
     nav = ""
     nav << previous_page_button unless @posts.empty?
-    nav << middle_archives_button(@section)
+    nav << middle_archives_button(@section.name_path)
     nav << next_page_button unless @posts.empty?
   end
 

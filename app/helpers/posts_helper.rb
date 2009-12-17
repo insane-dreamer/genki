@@ -7,8 +7,8 @@ module PostsHelper
 
   def single_post_navigation(post)
     nav = previous_post_button
-    nav << middle_home_button(post.section_id,false)
-    nav << middle_archives_button(post.section_id,false)
+    nav << middle_home_button(post.section.name_path,false)
+    nav << middle_archives_button(post.section.name_path,false)
     nav << next_post_button
   end
 
