@@ -21,7 +21,7 @@ class FrontpageController < ApplicationController
 #    raise(ActiveRecord::RecordNotFound) if @tag && @posts.empty?
     
     respond_to do |format|
-      format.html
+      format.html { mark_last_visit }
       format.js
       format.atom
     end
@@ -86,6 +86,11 @@ class FrontpageController < ApplicationController
         @error = "Invalid email address. Please check and resubmit."
     end
     return @error
+  end
+
+  def mark_last_visit
+    @last_visit ||= cookies[:last_visit]
+    cookies[:last_visit] = Time.now
   end
 
 end

@@ -104,7 +104,6 @@ opacity: 0.65;
 	padding: 6px 0 0 0;	
 }
 
-
 /*-------------Layout Divs--------------*/
 
 #headerWrap {
@@ -307,6 +306,9 @@ background: url(/images/feature_bg.jpg) top left no-repeat;
   #featureLeft a.carousel-selected {
   background: url(/images/nav_active.gif) top left no-repeat;
   color: #3e6276;
+  }
+  #featureLeft a div.new {
+  background: url(/images/new.png) 130px 0 no-repeat;
   }
 
 #featureRight {

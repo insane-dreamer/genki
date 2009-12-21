@@ -19,4 +19,10 @@ named_scope :show_on_front, :conditions => ['frontpage = ?', true]
     self.name.parameterize
   end
 
+  def new_content_since(last_visit)
+    if last_visit
+      true if self.posts.published.last(:order => 'published_at ASC').published_at > last_visit.to_time
+    end
+  end
+
 end
