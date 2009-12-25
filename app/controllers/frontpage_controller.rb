@@ -91,6 +91,13 @@ class FrontpageController < ApplicationController
   def mark_last_visit
     @last_visit ||= cookies[:last_visit]
     cookies[:last_visit] = Time.now
+    @sections = Section.show_on_front
+    total_new_posts = 0
+    @sections.each { |s| total_new_posts += s.new_content_since(@last_visit) }
+    if total_new_posts > 0
+      flash[:notice] = "#{total_new_posts} new posts since your last visit!"
+    end
+    @new_tweets = Tweet.new_content_since(@last_visit)
   end
 
 end

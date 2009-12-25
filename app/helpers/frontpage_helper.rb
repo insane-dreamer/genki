@@ -8,13 +8,22 @@ module FrontpageHelper
   end
 
   def frontpage_tabs(section)
-    nav = Section.show_on_front.map do |s|
+    @sections ||= Section.show_on_front
+    nav = @sections.map do |s|
       link_class = s == section ? 'carousel-jumper carousel-selected' : 'carousel-jumper'
-      content = s.new_content_since(@last_visit) > 0 ? content_tag(:div,s.name.upcase,:class => 'new') : s.name.upcase
+      content = case 
+        when s.new_content > 9
+          content_tag(:div,s.name.upcase,:class => "plus") 
+        when s.new_content > 0  
+          content_tag(:div,s.name.upcase,:class => "n#{s.new_content.to_s}") 
+        else
+          s.name.upcase
+      end
       link_to_remote(content, :url => frontpage_path(:section => s), :html => {:class => link_class})
     end
     link_class = section == 'TWEET' ? 'carousel-jumper carousel-selected' : 'carousel-jumper'
-    nav << link_to_remote("TWEET", :url => tweet_path(:page => 1), :html => {:class => link_class}) 
+    content = @new_tweets ? content_tag(:div,'TWEET',:class => 'plus') : 'TWEET'
+    nav << link_to_remote(content, :url => tweet_path(:page => 1), :html => {:class => link_class}) 
   end
 
   def previous_page_button

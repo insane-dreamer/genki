@@ -2,6 +2,8 @@ class Section < ActiveRecord::Base
 
 has_many :posts
 
+attr_accessor_with_default :new_content, 0
+
 validates_presence_of :name, :message => "can't be blank"
 validates_presence_of :per_page, :message => "can't be blank"
 validates_numericality_of :per_page, :only_integer => true, :message => "can only be whole number."
@@ -20,7 +22,8 @@ named_scope :show_on_front, :conditions => ['frontpage = ?', true]
   end
 
   def new_content_since(last_visit)
-    last_visit ? self.posts.count(:conditions => ["published_at > ? and published = ?", last_visit.to_time, true]) : 0
+    self.new_content = self.posts.count(:conditions => ["published_at > ? and published = ?", last_visit.to_time, true]) if last_visit
+    self.new_content
   end
 
 end

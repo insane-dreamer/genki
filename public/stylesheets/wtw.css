@@ -307,9 +307,37 @@ background: url(/images/feature_bg.jpg) top left no-repeat;
   background: url(/images/nav_active.gif) top left no-repeat;
   color: #3e6276;
   }
-  #featureLeft a div.new {
-  background: url(/images/new.png) 130px 0 no-repeat;
+  #featureLeft a div.n1 {
+  background: url(/images/1.png) 130px 0 no-repeat;
   }
+  #featureLeft a div.n2 {
+  background: url(/images/2.png) 130px 0 no-repeat;
+  }
+  #featureLeft a div.n3 {
+  background: url(/images/3.png) 130px 0 no-repeat;
+  }
+  #featureLeft a div.n4 {
+  background: url(/images/4.png) 130px 0 no-repeat;
+  }
+  #featureLeft a div.n5 {
+  background: url(/images/5.png) 130px 0 no-repeat;
+  }
+  #featureLeft a div.n6 {
+  background: url(/images/6.png) 130px 0 no-repeat;
+  }
+  #featureLeft a div.n7 {
+  background: url(/images/7.png) 130px 0 no-repeat;
+  }
+  #featureLeft a div.n8 {
+  background: url(/images/8.png) 130px 0 no-repeat;
+  }
+  #featureLeft a div.n9 {
+  background: url(/images/9.png) 130px 0 no-repeat;
+  }
+  #featureLeft a div.plus {
+  background: url(/images/plus.png) 130px 0 no-repeat;
+  }
+
 
 #featureRight {
 width: 608px;
