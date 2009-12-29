@@ -8,7 +8,7 @@ class FrontpageController < ApplicationController
       # section could be name or id
       Section.find_by_name(params[:section].downcase) || Section.find(params[:section].to_i) 
     else
-      Section.first
+      Section.show_on_front.first
     end
     @posts = if params[:direction]
       Post.find(params[:post]).get_next(params[:direction],@section.per_page)

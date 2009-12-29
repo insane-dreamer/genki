@@ -3,6 +3,7 @@
   %td= h(section.description_excerpt)
   %td= h(section.per_page.to_s)
   %td= section.frontpage ? "Yes" : "No"
+  %td= h(section.position.to_s)
   %td= section.posts.size.to_s
   %td
     = link_to image_tag('silk/pencil.png', :alt => 'edit'), admin_section_path(section)

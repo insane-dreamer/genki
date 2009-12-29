@@ -8,8 +8,9 @@ validates_presence_of :name, :message => "can't be blank"
 validates_presence_of :per_page, :message => "can't be blank"
 validates_numericality_of :per_page, :only_integer => true, :message => "can only be whole number."
 validates_inclusion_of :per_page, :in => 1..2, :message => "can only be between 1 and 2."
+validates_numericality_of :position, :only_integer => true, :message => "can only be whole number."
 
-named_scope :show_on_front, :conditions => ['frontpage = ?', true]
+named_scope :show_on_front, :conditions => ['frontpage = ?', true], :order => "position ASC" 
 
 
   def description_excerpt
