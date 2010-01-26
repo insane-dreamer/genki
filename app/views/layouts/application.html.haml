@@ -21,3 +21,4 @@
         #content      
           = yield(:content) || yield               
         = render :partial => "layouts/footer"
+    = render :partial => "layouts/analytics" if RAILS_ENV == "production"
