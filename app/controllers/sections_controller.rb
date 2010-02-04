@@ -5,7 +5,7 @@ class SectionsController < ApplicationController
   def show
     @page = params[:page] ? params[:page].to_i : 1
     # the per_page corresponds to the number of months shown, not posts
-    per_page = 2
+    per_page = 3
     # params[:id] could be the id or the section name (for nice URLs)
     @section = params[:id].to_i > 0 ? Section.find(params[:id]) : Section.find_by_name(params[:id].gsub('-',' '))
     posts = @section.posts.published.find_all_grouped_by_month
