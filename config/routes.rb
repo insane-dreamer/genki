@@ -23,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sections, :path_prefix => 'archives', :only => [:show]
   map.resources :sitemap
   map.resources :pages 
+  map.connect '/pages/*id', :controller => 'pages', :action => 'show'
 
   # frontpage routes
   map.frontpage '/section/:section', :controller => 'frontpage', :action => 'index'
