@@ -4,7 +4,7 @@
   %head
     %meta(http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8")
     %title= yield(:page_title) || config[:title]
-    = stylesheet_link_tag 'wtw', 'lightbox', :cache => 'defaults'
+    = stylesheet_link_tag 'wtw', 'lightbox', 'tfilogin', :cache => 'defaults'
     = javascript_include_tag :defaults, :cache => 'defaults'
     = javascript_include_tag 'builder', 'lightbox', :cache => 'extra'
     = open_id_delegation_link_tags(h(config[:open_id_delegation, :server]), h(config[:open_id_delegation, :delegate])) if config[:open_id_delegation]
@@ -15,6 +15,7 @@
 
   %body
     = render :partial => "layouts/header"
+    = render :partial => "layouts/tfilogin"
     #bodyInner
       #wrapper    
         = link_to content_tag(:div, nil, :id => "header"), root_path

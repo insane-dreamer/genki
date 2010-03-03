@@ -1,0 +1,11 @@
+%span#zlogin-link(onClick="document.getElementById('zlogin-box').style.display = 'block'")
+#zlogin-box(style="display: none;")
+  %p You are logged in as:
+  %p
+    %strong
+      %a(href="https://members.tfionline.com/account/" title="Link to your profile.")
+      = (request.env['HTTP_X_REMOTE_USER'] || request.env['REMOTE_USER'])
+    (
+    %a(href="/logout")Log Out
+    )
+  %span(id="zlogin-close" onClick="document.getElementById('zlogin-box').style.display = 'none'")
