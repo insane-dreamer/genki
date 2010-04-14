@@ -14,7 +14,7 @@ class Page < ActiveRecord::Base
   end
 
   def apply_filter
-    self.body_html = EnkiFormatter.format_as_xhtml(self.body)
+    self.body_html = Maruku.new(self.body).to_html
   end
 
   def active?

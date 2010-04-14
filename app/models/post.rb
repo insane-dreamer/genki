@@ -129,8 +129,8 @@ class Post < ActiveRecord::Base
   end
 
   def apply_filter
-    self.body_html = EnkiFormatter.format_as_xhtml(self.body)
-    self.summary_html = EnkiFormatter.format_as_xhtml(self.summary)
+    self.body_html = Maruku.new(self.body).to_html
+    self.summary_html = Maruku.new(self.summary).to_html
   end
 
   def set_dates
