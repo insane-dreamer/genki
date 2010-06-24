@@ -56,6 +56,7 @@ class FrontpageController < ApplicationController
   def search
     @query = params[:query]
     @results = Post.pubbed.latest_first.search @query, :page => params[:page], :per_page => 15
+    render :layout => 'application'
   end
   
 	def submit
