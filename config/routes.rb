@@ -31,6 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   map.submit '/submit', :controller => 'frontpage', :action => 'submit'
   map.tweet '/tweet/:page/:direction', :controller => 'frontpage', :action => 'tweet', :defaults => { :direction => 'none', :page => 1 }
   map.about '/about', :controller => 'pages', :action => 'show', :id => 'about'
+  map.wtw_resources '/resources', :controller => 'pages', :action => 'show', :id => 'resources'
 
   map.connect '/tweet', :controller => 'frontpage', :action => 'tweet'
 

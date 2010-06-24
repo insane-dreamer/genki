@@ -4,6 +4,7 @@
   #headerTop
     #flash= show_flash() if ( flash[:notice] || flash[:error] )
     = search_and_submit_links
+    = link_to "RESOURCES", wtw_resources_path
     = link_to "ABOUT", about_path
     = link_to "CGOIB", section_path('cgoib') if Section.find_by_name('cgoib')
     = image_tag('loading.gif', :id => 'spinner', :style => 'display:none;')
