@@ -23,7 +23,7 @@ named_scope :show_on_front, :conditions => ['frontpage = ?', true], :order => "p
   end
 
   def new_content_since(last_visit)
-    self.new_content = self.posts.count(:conditions => ["published_at > ? and published = ?", last_visit.to_time, true]) if last_visit
+    self.new_content = self.posts.count(:conditions => ["published_at > ? and published = ?", last_visit.to_time.utc, true]) if last_visit
     self.new_content
   end
 

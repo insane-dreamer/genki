@@ -91,7 +91,7 @@ class FrontpageController < ApplicationController
 
   def mark_last_visit
     @last_visit ||= cookies[:last_visit]
-    cookies[:last_visit] = Time.now
+    cookies[:last_visit] = Time.now.utc
     @sections = Section.show_on_front
     total_new_posts = 0
     @sections.each { |s| total_new_posts += s.new_content_since(@last_visit) }
