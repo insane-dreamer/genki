@@ -16,7 +16,7 @@ atom_feed(
   @rssposts.each do |post|
    feed.entry(post, :url => post_path(post, :only_path => false), :published => post.published_at, :updated => post.edited_at) do |entry|
       entry.title   post.title
-      entry.content post.summary.to_html, :type => 'html'
+      entry.content Maruku.new(post.summary).to_html, :type => 'html'
     end
   end
 end
