@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-caches_page :show
+# caches_page :show
 
   def show
     if params[:direction]
