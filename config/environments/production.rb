@@ -19,3 +19,6 @@ config.action_controller.perform_caching             = true
 # config.action_mailer.raise_delivery_errors = false
 
 Paperclip.options[:command_path] = "/usr/local/bin"
+
+ExceptionNotification::Notifier.exception_recipients = %w(francis@abmc.net)
+ExceptionNotification::Notifier.email_prefix = "[WTW ERROR] "

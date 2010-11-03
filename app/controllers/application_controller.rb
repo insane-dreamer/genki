@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-#  include ExceptionNotifiable # using hoptoad
+  include ExceptionNotification::Notifiable
 
   helper :all # include all helpers, all the time
 
