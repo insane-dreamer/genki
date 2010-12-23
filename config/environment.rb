@@ -23,7 +23,7 @@ Rails::Initializer.run do |config|
   config.gem "will_paginate", :version => "~> 2.3", :source => 'http://gemcutter.org'
   config.gem "paged_scopes", :source => "http://gemcutter.org"
   config.gem "freelancing-god-thinking-sphinx", :lib => 'thinking_sphinx', :version => '~> 1.2.11', :source => 'http://gems.github.com'
-  config.gem "twitter"
+  config.gem "twitter", :version => "~> 1.0.0"
   config.gem 'railhead_sanitize'
   config.gem 'maruku'
   config.gem 'silent-postgres'
