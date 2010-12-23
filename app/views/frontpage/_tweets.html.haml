@@ -1,7 +1,7 @@
 #tweets
   - @tweets.each do |t|
     %li.tweet
-      = t.tweet
+      = raw t.tweet
       %span.tweet_date 
         &nbsp;&nbsp;
         = t.created_at.to_datetime.strftime("%d %b")
