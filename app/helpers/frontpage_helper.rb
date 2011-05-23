@@ -21,9 +21,9 @@ module FrontpageHelper
       end
       link_to_remote(content, :url => frontpage_path(:section => s), :html => {:class => link_class})
     end
-    link_class = section == 'TWEET' ? 'carousel-jumper carousel-selected' : 'carousel-jumper'
-    content = @new_tweets ? content_tag(:div,'TWEET',:class => 'plus') : 'TWEET'
-    nav << link_to_remote(content, :url => tweet_path(:page => 1), :html => {:class => link_class}) 
+#    link_class = section == 'TWEET' ? 'carousel-jumper carousel-selected' : 'carousel-jumper'
+#    content = @new_tweets ? content_tag(:div,'TWEET',:class => 'plus') : 'TWEET'
+#    nav << link_to_remote(content, :url => tweet_path(:page => 1), :html => {:class => link_class}) 
   end
 
   def previous_page_button
