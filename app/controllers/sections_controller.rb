@@ -7,7 +7,7 @@ class SectionsController < ApplicationController
     # the per_page corresponds to the number of months shown, not posts
     per_page = 3
     # params[:id] could be the id or the section name (for nice URLs) 
-    @section = params[:id].to_i > 0 ? Section.find(params[:id]) : Section.find(:conditions => ['lower(name) = ?', params[:id].gsub('-',' ').downcase]) 
+    @section = params[:id].to_i > 0 ? Section.find(params[:id]) : Section.find(:conditions => ["name LIKE ?", params[:id].gsub('-',' ').downcase]) 
     posts = @section.posts.published.find_all_grouped_by_month
     @months = posts.paginate :page => @page, :per_page => per_page
     # use these vars for custom pagination
