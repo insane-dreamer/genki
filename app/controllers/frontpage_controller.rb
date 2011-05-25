@@ -6,7 +6,7 @@ class FrontpageController < ApplicationController
 #    @tag = params[:tag]
     @section = if params[:section]
       # section could be name or id
-      Section.find_by_name(params[:id].gsub('-',' ').downcase) || Section.find(params[:section].to_i) 
+      Section.find_by_name(params[:section].downcase) || Section.find(params[:section].to_i) 
     else
       Section.show_on_front.first
     end
