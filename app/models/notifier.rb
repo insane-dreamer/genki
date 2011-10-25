@@ -28,7 +28,7 @@ class Notifier < ActionMailer::Base
 protected
 
   def gen_post_url(post)
-      post_full_path_url(:year => post.created_at.year.to_s, :month => post.created_at.strftime("%m"), :day => post.created_at.strftime("%d"), :slug => post.slug, :host => "wtw.familymembers.com")  
+      post_full_path_url(:year => post.updated_at.year.to_s, :month => post.updated_at.strftime("%m"), :day => post.updated_at.strftime("%d"), :slug => post.slug, :host => "wtw.familymembers.com")  
   end
   
 end
